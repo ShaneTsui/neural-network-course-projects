@@ -1,2 +1,5 @@
 # Notebook Checkpoints
 .ipynb_checkpoints/
+
+# Dataset
+*.tar.gz
