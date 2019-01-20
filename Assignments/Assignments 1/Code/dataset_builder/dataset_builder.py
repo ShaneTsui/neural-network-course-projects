@@ -30,6 +30,10 @@ class DatasetBuilder:
                 self.subjects[subject].add(np.array(img, dtype=np.float64).reshape(-1, ),
                                            label)  # Reshaped to a vector
 
+    # def build_dataset(self):
+    #     train, holdout, test, pca = Dataset(), Dataset(), Dataset(), []
+
+
     def build_dataset(self, test_subject_id, labels):
         train, holdout, test, pca = Dataset(), Dataset(), Dataset(), []
 

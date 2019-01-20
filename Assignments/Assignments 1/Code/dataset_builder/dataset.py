@@ -1,4 +1,5 @@
 import numpy as np
+from utils.display.display import *
 
 class Dataset:
     def __init__(self, data=[], labels=[]):

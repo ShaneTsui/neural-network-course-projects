@@ -3,9 +3,9 @@ import numpy as np
 
 class SoftmaxClassifier(Classifier):
     def encoder(self, labels):
-        label_set = list(set(labels))
-        one_hot_dict = {label: one_hot for label, one_hot in zip(label_set, np.eye(len(label_set)))}
-        return lambda labels: np.array([one_hot_dict[label] for label in labels])
+        self.label_set = list(set(labels))
+        self.one_hot_dict = {label: one_hot for label, one_hot in zip(self.label_set, np.eye(len(self.label_set)))}
+        return lambda labels: np.array([self.one_hot_dict[label] for label in labels])
 
     def softmax(self, s):
         return np.exp(s) / np.sum(np.exp(s), axis=1, keepdims=True)
