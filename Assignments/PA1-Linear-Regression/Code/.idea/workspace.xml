@@ -1,0 +1,684 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="809f93cc-6b50-45b7-af9e-84c6ed2eedf6" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/018_a2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/018_d1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/018_f2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/018_h1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/018_ht2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/018_m1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/018_n2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/018_s2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/027_a2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/027_d1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/027_f2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/027_h2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/027_ht2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/027_m2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/027_n5.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/027_s1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/036_a1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/036_d1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/036_f1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/036_h1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/036_ht1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/036_m2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/036_n2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/036_s2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/037_a1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/037_d1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/037_f2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/037_h2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/037_ht2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/037_m1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/037_n3.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/037_s1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/041_a1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/041_d2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/041_f1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/041_h2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/041_ht1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/041_m1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/041_n1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/041_s1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/043_a1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/043_d1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/043_f1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/043_h2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/043_ht2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/043_m1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/043_n2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/043_s1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/044_a1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/044_d2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/044_f2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/044_h1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/044_ht1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/044_m2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/044_n1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/044_s1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/048ng_a2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/048ng_d1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/048ng_f1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/048ng_h2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/048ng_ht2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/048ng_m1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/048ng_n2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/048ng_s2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/049_a2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/049_d2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/049_f2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/049_h1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/049_ht1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/049_m2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/049_n2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/049_s2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/050_a2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/050_d2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/050_f1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/050_h1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/050_ht2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/050_m1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/050_n4.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/CAFE/050_s1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/Facial Expression Classification-Copy1.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/Facial Expression Classification-midnight.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/Facial Expression Classification.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Archives/dataloader.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/CSE_251_PA1_Winter_2019.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/CSE_251_PA1_Winter_2019_v2.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/.idea/Code.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/.idea/dictionaries/Shane.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/cafe_main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/018_a2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/018_d1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/018_f2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/018_h1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/018_ht2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/018_m1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/018_n2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/018_s2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/027_a2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/027_d1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/027_f2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/027_h2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/027_ht2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/027_m2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/027_n5.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/027_s1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/036_a1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/036_d1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/036_f1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/036_h1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/036_ht1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/036_m2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/036_n2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/036_s2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/037_a1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/037_d1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/037_f2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/037_h2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/037_ht2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/037_m1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/037_n3.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/037_s1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/041_a1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/041_d2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/041_f1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/041_h2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/041_ht1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/041_m1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/041_n1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/041_s1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/043_a1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/043_d1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/043_f1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/043_h2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/043_ht2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/043_m1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/043_n2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/043_s1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/044_a1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/044_d2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/044_f2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/044_h1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/044_ht1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/044_m2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/044_n1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/044_s1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/048ng_a2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/048ng_d1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/048ng_f1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/048ng_h2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/048ng_ht2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/048ng_m1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/048ng_n2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/048ng_s2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/049_a2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/049_d2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/049_f2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/049_h1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/049_ht1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/049_m2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/049_n2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/049_s2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/050_a2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/050_d2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/050_f1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/050_h1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/050_ht2.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/050_m1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/050_n4.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/data/CAFE/050_s1.pgm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/dataset_builder/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/dataset_builder/dataset.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/dataset_builder/dataset_builder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/dataset_builder/subject.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/scikit/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/scikit/decomposition/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/scikit/decomposition/pca.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/scikit/models/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/scikit/models/classifier.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/scikit/models/logistic.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/scikit/models/softmax.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/scikit/pipeline/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/scikit/pipeline/cafe_pipeline.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/utils/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/utils/display/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/utils/display/display.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Code/utils/recorder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/2b.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/2b/accuracies.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/2b/logistic losses, n_components=10, learning_rates=0.1, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/2b/logistic losses, n_components=10, learning_rates=0.4, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/2b/logistic losses, n_components=10, learning_rates=0.8, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/2b/logistic losses, n_components=20, learning_rates=0.1, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/2b/logistic losses, n_components=20, learning_rates=0.4, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/2b/logistic losses, n_components=20, learning_rates=0.8, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/2b/logistic losses, n_components=40, learning_rates=0.1, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/2b/logistic losses, n_components=40, learning_rates=0.4, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/2b/logistic losses, n_components=40, learning_rates=0.8, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/2c.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/10-components-3-learning-rate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/20-components-3-learning-rate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/40-components-3-learning-rate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/as-error-10-components.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/as-error-20-components.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/as-error-40-components.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/first-6-eigenvectors.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/hm-error-10-components.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/hm-error-20-components.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/hm-error-40-components.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/six-emotions.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/softmax losses, n_components=10, learning_rates=0.05, n_epoches=50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/softmax losses, n_components=10, learning_rates=0.1, n_epoches=50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/softmax losses, n_components=10, learning_rates=0.4, n_epoches=50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/softmax losses, n_components=15, learning_rates=0.05, n_epoches=50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/softmax losses, n_components=15, learning_rates=0.1, n_epoches=50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/softmax losses, n_components=15, learning_rates=0.4, n_epoches=50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/softmax losses, n_components=20, learning_rates=0.05, n_epoches=50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/softmax losses, n_components=20, learning_rates=0.1, n_epoches=50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/softmax losses, n_components=20, learning_rates=0.4, n_epoches=50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/softmax losses, n_components=5, learning_rates=0.05, n_epoches=50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/softmax losses, n_components=5, learning_rates=0.1, n_epoches=50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/softmax losses, n_components=5, learning_rates=0.4, n_epoches=50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/softmax losses, n_components=7, learning_rates=0.05, n_epoches=50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/softmax losses, n_components=7, learning_rates=0.1, n_epoches=50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/softmax losses, n_components=7, learning_rates=0.4, n_epoches=50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/softmax-batch-sgd-10-components.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/softmax-batch-sgd-20-components.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/softmax-batch-sgd-40-components.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/softmax-error-10-components.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/softmax-error-15-components.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/softmax-error-20-components.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/softmax-error-25-components.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/softmax-error-30-components.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/softmax-error-35-components.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/softmax-error-40-components.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/softmax-error-45-components.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Images/weight-visualization.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/accuracies.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=10, learning_rates=0.1, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=10, learning_rates=0.2, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=10, learning_rates=0.25, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=10, learning_rates=0.4, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=10, learning_rates=0.5, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=10, learning_rates=0.6, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=10, learning_rates=0.75, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=10, learning_rates=0.8, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=20, learning_rates=0.1, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=20, learning_rates=0.2, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=20, learning_rates=0.25, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=20, learning_rates=0.4, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=20, learning_rates=0.5, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=20, learning_rates=0.6, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=20, learning_rates=0.75, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=20, learning_rates=0.8, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=30, learning_rates=0.1, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=30, learning_rates=0.2, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=30, learning_rates=0.25, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=30, learning_rates=0.4, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=30, learning_rates=0.5, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=30, learning_rates=0.6, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=30, learning_rates=0.75, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=30, learning_rates=0.8, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=40, learning_rates=0.1, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=40, learning_rates=0.2, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=40, learning_rates=0.25, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=40, learning_rates=0.4, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=40, learning_rates=0.5, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=40, learning_rates=0.6, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=40, learning_rates=0.75, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=40, learning_rates=0.8, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=5, learning_rates=0.1, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=5, learning_rates=0.2, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=5, learning_rates=0.25, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=5, learning_rates=0.4, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=5, learning_rates=0.5, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=5, learning_rates=0.6, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=5, learning_rates=0.75, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/RawImages/logistic losses, n_components=5, learning_rates=0.8, n_epoches=10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Use logistic and softmax regression to classify facial.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/Use logistic and softmax regression to classify facial.tex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/nips15submit_09.sty" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Assignments 1/Report/nips15submit_e.sty" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="Code" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cafe_main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+              <folding>
+                <element signature="e#0#50#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/utils/recorder.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="594">
+              <caret line="34" column="52" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dataset_builder/dataset_builder.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="468">
+              <caret line="33" column="23" selection-start-line="32" selection-start-column="22" selection-end-line="33" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/utils/display/display.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/scikit/models/softmax.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="10" column="66" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="66" />
+              <folding>
+                <element signature="e#0#47#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scikit/models/classifier.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="864">
+              <caret line="48" column="44" selection-start-line="48" selection-start-column="44" selection-end-line="48" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scikit/models/logistic.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="20" column="48" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="48" />
+              <folding>
+                <element signature="e#0#47#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dataset_builder/dataset.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scikit/pipeline/cafe_pipeline.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="936">
+              <caret line="59" column="34" selection-start-line="59" selection-start-column="34" selection-end-line="59" selection-end-column="34" />
+              <folding>
+                <element signature="e#0#58#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>transfor</find>
+      <find>self.PCA</find>
+      <find>pca</find>
+      <find>encoder</find>
+      <find>confusion_matrix</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/DatasetBuilder/Subject.py" />
+        <option value="$PROJECT_DIR$/DatasetBuilder/Dataset.py" />
+        <option value="$PROJECT_DIR$/Dataset/DatasetBuilder.py" />
+        <option value="$PROJECT_DIR$/DatasetBuilder/DatasetBuilder.py" />
+        <option value="$PROJECT_DIR$/datasetBuilder/DatasetBuilder.py" />
+        <option value="$PROJECT_DIR$/dataset_builder/DatasetBuilder.py" />
+        <option value="$PROJECT_DIR$/dataset_builder/dataset.py" />
+        <option value="$PROJECT_DIR$/scikit/decomposition/pca.py" />
+        <option value="$PROJECT_DIR$/scikit/models/logistic.py" />
+        <option value="$PROJECT_DIR$/scikit/pipeline/cafe_pipeline.py" />
+        <option value="$PROJECT_DIR$/scikit/models/softmax.py" />
+        <option value="$PROJECT_DIR$/utils/display/display.py" />
+        <option value="$PROJECT_DIR$/scikit/models/classifier.py" />
+        <option value="$PROJECT_DIR$/dataset_builder/dataset_builder.py" />
+        <option value="$PROJECT_DIR$/utils/recorder.py" />
+        <option value="$PROJECT_DIR$/cafe_main.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1244" />
+    <option name="width" value="1323" />
+    <option name="height" value="1447" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Code" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Code" type="462c0819:PsiDirectoryNode" />
+              <item name="scikit" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Code" type="462c0819:PsiDirectoryNode" />
+              <item name="scikit" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value=":&#9;null&#9;null" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="cafe_main" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Code" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cafe_main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <module name="Code" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;.&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.cafe_main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="809f93cc-6b50-45b7-af9e-84c6ed2eedf6" name="Default" comment="" />
+      <created>1547927211860</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1547927211860</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1244" y="0" width="1323" height="1447" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2544747" />
+      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.5" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49791667" weight="0.3297414" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50208336" side_tool="true" weight="0.3297414" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Data View" order="3" />
+    </layout>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/dataset_builder/subject.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="43" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scikit/decomposition/pca.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/python/python35/Lib/site-packages/matplotlib/backend_bases.py" />
+    <entry file="file://$PROJECT_DIR$/cafe_main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/recorder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="34" column="52" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset_builder/dataset_builder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="33" column="23" selection-start-line="32" selection-start-column="22" selection-end-line="33" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/display/display.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scikit/models/classifier.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="864">
+          <caret line="48" column="44" selection-start-line="48" selection-start-column="44" selection-end-line="48" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scikit/models/logistic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="20" column="48" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset_builder/dataset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scikit/pipeline/cafe_pipeline.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="936">
+          <caret line="59" column="34" selection-start-line="59" selection-start-column="34" selection-end-line="59" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scikit/models/softmax.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="66" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="66" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
