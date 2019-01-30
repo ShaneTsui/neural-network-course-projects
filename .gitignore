@@ -3,6 +3,9 @@ Assignments/**/Individual/
 Assignments/**/PA1-Linear-Regression-old/
 ExtraMaterials/
 
+# Data
+*.pkl
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
