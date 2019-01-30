@@ -127,41 +127,41 @@ dmypy.json
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # User-specific stuff
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/**/usage.statistics.xml
-.idea/**/dictionaries
-.idea/**/shelf
+Assignments/**/.idea/**/workspace.xml
+Assignments/**/.idea/**/tasks.xml
+Assignments/**/.idea/**/usage.statistics.xml
+Assignments/**/.idea/**/dictionaries
+Assignments/**/.idea/**/shelf
 
 # Generated files
-.idea/**/contentModel.xml
+Assignments/**/.idea/**/contentModel.xml
 
 # Sensitive or high-churn files
-.idea/**/dataSources/
-.idea/**/dataSources.ids
-.idea/**/dataSources.local.xml
-.idea/**/sqlDataSources.xml
-.idea/**/dynamic.xml
-.idea/**/uiDesigner.xml
-.idea/**/dbnavigator.xml
+Assignments/**/.idea/**/dataSources/
+Assignments/**/.idea/**/dataSources.ids
+Assignments/**/.idea/**/dataSources.local.xml
+Assignments/**/.idea/**/sqlDataSources.xml
+Assignments/**/.idea/**/dynamic.xml
+Assignments/**/.idea/**/uiDesigner.xml
+Assignments/**/.idea/**/dbnavigator.xml
 
 # Gradle
-.idea/**/gradle.xml
-.idea/**/libraries
+Assignments/**/.idea/**/gradle.xml
+Assignments/**/.idea/**/libraries
 
 # Gradle and Maven with auto-import
 # When using Gradle or Maven with auto-import, you should exclude module files,
 # since they will be recreated, and may cause churn.  Uncomment if using
 # auto-import.
-# .idea/modules.xml
-# .idea/*.iml
-# .idea/modules
+# Assignments/**/.idea/modules.xml
+# Assignments/**/.idea/*.iml
+# Assignments/**/.idea/modules
 
 # CMake
 cmake-build-*/
 
 # Mongo Explorer plugin
-.idea/**/mongoSettings.xml
+Assignments/**/.idea/**/mongoSettings.xml
 
 # File-based project format
 *.iws
@@ -176,7 +176,7 @@ out/
 atlassian-ide-plugin.xml
 
 # Cursive Clojure plugin
-.idea/replstate.xml
+Assignments/**/.idea/replstate.xml
 
 # Crashlytics plugin (for Android Studio and IntelliJ)
 com_crashlytics_export_strings.xml
@@ -185,10 +185,10 @@ crashlytics-build.properties
 fabric.properties
 
 # Editor-based Rest Client
-.idea/httpRequests
+Assignments/**/.idea/httpRequests
 
 # Android studio 3.1+ serialized cache file
-.idea/caches/build_file_checksums.ser
+Assignments/**/.idea/caches/build_file_checksums.ser
 
 
 
