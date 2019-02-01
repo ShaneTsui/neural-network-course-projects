@@ -3,15 +3,16 @@ import pickle
 
 config = {}
 config['layer_specs'] = [784, 50, 50, 10]  # The length of list denotes number of hidden layers; each element denotes number of neurons in that layer; first element is the size of input layer, last element is the size of output layer.
-config['activation'] = 'sigmoid' # Takes values 'sigmoid', 'tanh' or 'ReLU'; denotes activation function for hidden layers
+config['activation'] = 'ReLU' # Takes values 'sigmoid', 'tanh' or 'ReLU'; denotes activation function for hidden layers
 config['batch_size'] = 1000  # Number of training samples per batch to be passed to network
-config['epochs'] = 200  # Number of epochs to train the model
+config['epochs'] = 300  # Number of epochs to train the model
 config['early_stop'] = True  # Implement early stopping or not
 config['early_stop_epoch'] = 5  # Number of epochs for which validation loss increases to be counted as overfitting
 config['L2_penalty'] = 0.0001  # Regularization constant
 config['momentum'] = True  # Denotes if momentum is to be applied or not
 config['momentum_gamma'] = 0.9  # Denotes the constant 'gamma' in momentum expression
-config['learning_rate'] = 0.02 # Learning rate of gradient descent algorithm
+config['learning_rate'] = 0.15 # Learning rate of gradient descent algorithm
+# EXP: sigmoid = 0.5, tanh = 0.5; ReLU = 0.15
 
 # Be aware of overflow
 def softmax(x):
@@ -40,7 +41,10 @@ def load_data(fname):
     for idx, label in enumerate(labels):
         labels_one_hot[idx][label] = 1
 
-    return np.array(images), labels_one_hot
+    images = np.array(images)
+    images = (images - np.min(images, axis=1, keepdims=True)) / (np.max(images, axis=1, keepdims=True) - np.min(images, axis=1, keepdims=True))
+
+    return images, labels_one_hot
 
 class Activation:
     def __init__(self, activation_type = "sigmoid"):
@@ -98,8 +102,8 @@ class Activation:
 class Layer():
     def __init__(self, in_units, out_units):
         np.random.seed(42)
-        self.w = np.random.randn(in_units, out_units)  # Weight matrix
-        self.b = np.zeros((1, out_units)).astype(np.float32)  # Bias
+        self.w = np.random.randn(in_units, out_units) / 100 # Weight matrix
+        self.b = np.zeros((1, out_units)).astype(np.float32) # Bias
         self.x = None  # Save the input to forward_pass in this
         self.a = None  # Save the output of forward pass in this (without activation)
 
@@ -109,8 +113,8 @@ class Layer():
         self.delta_w_old = 0
         self.delta_b_old = 0
 
-        self.w_snapshot = None # Weight matrix
-        self.b_snapshot = None # Bias
+        self.w_snapshot = self.w # Weight matrix
+        self.b_snapshot = self.b # Bias
 
     def forward_pass(self, x):
         """
@@ -129,15 +133,15 @@ class Layer():
         N = self.x.shape[0]
 
         self.d_x = delta.dot(self.w.T)
-        self.d_w = self.x.T.dot(delta) / N + l2_penalty * self.w
-        self.d_b = delta.sum(axis=0) / N + l2_penalty * self.b
+        self.d_w = self.x.T.dot(delta) / N - l2_penalty * self.w
+        self.d_b = delta.sum(axis=0) / N
 
         return self.d_x
 
     def update_parameters(self, learning_rate, use_momentum=False, momentum_gamma=None):
         if use_momentum:
-            delta_w = - learning_rate * self.d_w + momentum_gamma * self.delta_w_old
-            delta_b = - learning_rate * self.d_b + momentum_gamma * self.delta_b_old
+            delta_w = learning_rate * self.d_w + momentum_gamma * self.delta_w_old
+            delta_b = learning_rate * self.d_b + momentum_gamma * self.delta_b_old
 
             self.w += delta_w
             self.b += delta_b
@@ -145,8 +149,8 @@ class Layer():
             self.delta_w_old = delta_w
             self.delta_b_old = delta_b
         else:
-            self.w -= learning_rate * self.d_w
-            self.b -= learning_rate * self.d_b
+            self.w += learning_rate * self.d_w
+            self.b += learning_rate * self.d_b
 
     def take_snapshot(self):
         self.w_snapshot = self.w  # Weight matrix
@@ -173,6 +177,7 @@ class Neuralnetwork():
         '''
         find cross entropy loss between logits and targets
         '''
+        # logits = np.clip(logits, epsilon, 1. - epsilon)
         N = targets.shape[0]
         return - np.sum(np.multiply(targets, np.log(logits))) / N
 
@@ -185,7 +190,7 @@ class Neuralnetwork():
         self.x = x
         self.targets = targets
 
-        # Forwand pass
+        # Forward pass
         input = x
         for layer in self.layers:
             input = layer.forward_pass(input)
@@ -199,7 +204,7 @@ class Neuralnetwork():
         if l2_penalty:
             for layer in self.layers:
                 if isinstance(layer, Layer):
-                    loss += (np.sum(layer.w ** 2) + np.sum(layer.b ** 2)) * l2_penalty / 2
+                    loss += (np.sum(layer.w ** 2)) * l2_penalty / 2
         return loss
 
     def backward_pass(self, l2_penalty=0):
@@ -207,7 +212,7 @@ class Neuralnetwork():
         implement the backward pass for the whole network.
         hint - use previously built functions.
         '''
-        delta = self.y - self.targets
+        delta = self.targets - self.y
         for layer in self.layers[::-1]:
             if isinstance(layer, Layer):
                 delta = layer.backward_pass(delta, l2_penalty)
