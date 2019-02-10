@@ -1,7 +1,15 @@
-# Implementing Backpropagation
-In this assignment, we will be implementing a configurable, Multi-Layer Perceptron neural network using NumPy. The starter code ```neuralnet_starter.py``` contains the abstractions of various componenets of a neural network, including layers and activation functions. You will be implementing the forward and backward propagation passes and combining the components to create a complete neural network. You will also be implementing the training and evaluation procedures to classify the [MNIST dataset](http://yann.lecun.com/exdb/mnist/). Complete the code in the  ```neuralnet_starter.py```, which we will be autograding. Feel free to create multiple copies of this starter code to run different experiments, however. We are providing a ```checker.py``` so that you may check the correctness of the functions you implement, <i>though we strongly encourage that you also write your own test cases</i>. You may run ```python checker.py``` at any point to generate an evaluation report about the correctness of your implementation.
+# Part 1 How to run the code
+You should download the data by following this link: https://github.com/cse253-neural-networks/PA2-Backprop.
+And both the data folder and validate_data.pkl should be put at the root directory.
 
+The main part of the code shall be contained in neutralnet.py.
 
+In order to tailer the code to meet the requirement of the instructions, you only need to change the configure variable at the top of the neuralnet.py.
+To generate figure used in the paper, you can use the fig() function in neuralnet.py.
+
+To generate the answer for PA II (b), you can simply run p2.py file to reproduce the required result.
+
+# Part 2 The design of the class
 ## Dataset
 Unzip ```data.zip``` to get the pickle files for train, validation and test splits of MNIST dataset. The data is in the form of ```n * 785``` NumPy array (in which the first 784 columns contain the flattend 28 * 28 MNIST image and the last column gives the class of image from 0 to 9. All of the splits have been shuffled so you may skip the shuffling step. You need to implment the function ```load_data``` to return 2 arrays X, Y given a pickle file. X should be the input features and Y should be the one-hot encoded labels of each input image i.e ```shape(X) = n,784``` and ```shape(Y) = n,10```
 
