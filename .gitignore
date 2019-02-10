@@ -8,6 +8,7 @@ ExtraMaterials/
 *.pkl
 *.zip
 *.tar.gz
+**/datasets/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
