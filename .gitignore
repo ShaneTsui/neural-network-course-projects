@@ -3,6 +3,7 @@ Assignments/**/.idea/
 Assignments/**/Individual/
 Assignments/**/PA1-Linear-Regression-old/
 ExtraMaterials/
+Assignments/**/data/
 
 # Data
 *.pkl
