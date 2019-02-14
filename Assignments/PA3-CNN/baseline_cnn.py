@@ -27,6 +27,7 @@ import torch.optim as optim
 import torchvision
 from torchvision import transforms, utils
 from xray_dataloader import ChestXrayDataset, create_split_loaders
+from xray_imbalanced_dataloader import create_balanced_split_loaders
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -65,10 +66,12 @@ class BasicCNN(nn.Module):
         #TODO: conv2: 12 input channels, 10 output channels, [8x8] kernel, initialization: xavier
         self.conv2 = nn.Conv2d(in_channels=12, out_channels=10, kernel_size=8)
         self.conv2_normed = nn.BatchNorm2d(10)
+        torch_init.xavier_normal_(self.conv2.weight)
 
         #TODO: conv3: 10 input channels, 8 output channels, [6x6] kernel, initialization: xavier
         self.conv3 = nn.Conv2d(in_channels=10, out_channels=8, kernel_size=6)
         self.conv3_normed = nn.BatchNorm2d(8)
+        torch_init.xavier_normal_(self.conv3.weight)
 
         #TODO: Apply max-pooling with a [3x3] kernel using tiling (*NO SLIDING WINDOW*)
         self.pool = nn.MaxPool2d(kernel_size=3, stride=1)
@@ -114,16 +117,15 @@ class BasicCNN(nn.Module):
         batch = batch.view(-1, self.num_flat_features(batch))
         
         # Connect the reshaped features of the pooled conv3 to fc1
-        batch = self.fc1(batch)
-        batch = self.fc1_normed(batch)
+        batch = func.relu(self.fc1_normed(self.fc1(batch)))
         
         # Connect fc1 to fc2 - this layer is slightly different than the rest (why?)
         batch = self.fc2(batch)
 
         # Return the class predictions
         #TODO: apply an activition function to 'batch'
-        return func.relu(batch)
-        # return func.sigmoid(batch)
+        # return func.relu(batch)
+        return func.sigmoid(batch)
 
 
     def num_flat_features(self, inputs):

@@ -1,6 +1,7 @@
 import numpy as np
 import torch
 
+
 class Evaluation:
 
     # torch : k-hot encoding
@@ -30,7 +31,6 @@ class Evaluation:
     def recall(self):
         return self.TP / (self.TP + self.FN)
 
-
     def confusion_matrix(self):
         '''
             pred | tar |   Action
@@ -56,7 +56,6 @@ class Evaluation:
                     else:
                         matrix[-1][-1] += 1
         return matrix / self.predicts.shape[0]
-
 
     def evaluate(self):
         print(self.accuracy())
