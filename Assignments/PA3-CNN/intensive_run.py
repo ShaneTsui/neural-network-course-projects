@@ -1,10 +1,8 @@
-from baseline_cnn import *
-from baseline_cnn import BasicCNN
+from intensive_cnn import *
 import torch.nn as nn
 import torch.optim as optim
 import time
 import pathlib
-
 
 
 conf = {}
@@ -14,7 +12,7 @@ conf['z_score'] = True
 # Setup: initialize the hyperparameters/variables
 num_epochs = 1           # Number of full passes through the dataset
 batch_size = 16          # Number of samples in each minibatch
-learning_rate = 0.001
+learning_rate = 0.01
 seed = np.random.seed(1) # Seed the random number generator for reproducibility
 p_val = 0.1              # Percent of the overall dataset to reserve for validation
 p_test = 0.2             # Percent of the overall dataset to reserve for testing
@@ -22,7 +20,7 @@ val_every_n = 100         #
 
 
 # Set up folder for model saving
-model_path = '{}/saved-models/baseline/{}/'.format(os.getcwd(), time.strftime("%Y%m%d-%H%M%S"))
+model_path = '{}/models/baseline/{}/'.format(os.getcwd(), time.strftime("%Y%m%d-%H%M%S"))
 model_pathlib = pathlib.Path(model_path)
 if not model_pathlib.exists():
     pathlib.Path(model_pathlib).mkdir(parents=True, exist_ok=True)
@@ -44,6 +42,11 @@ else: # Otherwise, train on the CPU
     extras = False
     print("CUDA NOT supported")
 
+# double the loss for class 1
+class_weight = torch.FloatTensor([1.0, 2.0, 1.0])
+multi_criterion = nn.MultiLabelSoftMarginLoss(weight=class_weight, reduce=False)
+
+
 # Setup the training, validation, and testing dataloaders
 train_loader, val_loader, test_loader = create_split_loaders(batch_size, seed, transform=transform,
                                                              p_val=p_val, p_test=p_test,
@@ -51,7 +54,7 @@ train_loader, val_loader, test_loader = create_split_loaders(batch_size, seed, t
                                                              extras=extras, z_score=conf['z_score'])
 
 # Instantiate a BasicCNN to run on the GPU or CPU based on CUDA support
-model = BasicCNN()
+model = IntensiveCNN()
 model = model.to(computing_device)
 print("Model on CUDA?", next(model.parameters()).is_cuda)
 
@@ -59,7 +62,7 @@ print("Model on CUDA?", next(model.parameters()).is_cuda)
 criterion = nn.MultiLabelSoftMarginLoss() #TODO - loss criteria are defined in the torch.nn package
 
 #TODO: Instantiate the gradient descent optimizer - use Adam optimizer with default parameters
-optimizer = optim.Adam(model.parameters(), lr=0.001) #TODO - optimizers are defined in the torch.optim package
+optimizer = optim.Adam(model.parameters(), lr=learning_rate) #TODO - optimizers are defined in the torch.optim package
 
 # Track the loss across training
 total_loss = []
@@ -96,19 +99,22 @@ for epoch in range(num_epochs):
         N_minibatch_loss += loss
 
         # TODO: Implement holdout-set-validation
-        # if minibatch_count % val_every_n:
-        #     model.eval()
-        #     with torch.no_grad():
-        #         val_loss = 0
-        #         for val_batch_count, (val_image, val_labels) in enumerate(val_loader):
-        #             val_image, val_labels = val_image.to(computing_device), val_labels.to(computing_device)
-        #             val_outputs = model(val_image)
-        #             val_loss += criterion(val_outputs, val_labels)
-        #         val_loss /= val_batch_count
-        #         if val_loss < val_loss_min:
-        #             model_name = "epoch_{}-batch_{}-loss_{}-{}.pt".format(epoch, minibatch_count, val_loss, time.strftime("%Y%m%d-%H%M%S"))
-        #             torch.save(model.state_dict(), os.path.join(model_path, model_name))
-        #             val_loss_min = val_loss
+        if minibatch_count % val_every_n:
+            model.eval()
+            with torch.no_grad():
+                val_loss = 0
+                for val_batch_count, (val_image, val_labels) in enumerate(val_loader):
+                    val_image, val_labels = val_image.to(computing_device), val_labels.to(computing_device)
+                    val_outputs = model(val_image)
+                    val_loss += criterion(val_outputs, val_labels)
+                    print(val_loss)
+                    if val_batch_count == 4:
+                        break
+                val_loss /= (val_batch_count + 1)
+                if val_loss < val_loss_min:
+                    model_name = "epoch_{}-batch_{}-loss_{}-{}.pt".format(epoch, minibatch_count, val_loss, time.strftime("%Y%m%d-%H%M%S"))
+                    torch.save(model.state_dict(), os.path.join(model_path, model_name))
+                    val_loss_min = val_loss
 
         if minibatch_count % N == 0:
             # Print the loss averaged over the last N mini-batches
@@ -130,7 +136,9 @@ total = 0
 for data in test_loader:
     images, labels = data
     outputs = model(Variable(images.cuda()))
-    predict = torch.sigmoid(outputs) > 0.5#.to(computing_device)
+    predict = torch.sigmoid(outputs) > 0.5
     l = labels.byte().to(computing_device)
     r = (l == predict)
-    # Use Evaluation to get result
+    acc = torch.sum(r.float(), dim=0)
+    print(acc.item())
+    acc = acc.item() / (predict.shape[1] * predict.shape[0])
