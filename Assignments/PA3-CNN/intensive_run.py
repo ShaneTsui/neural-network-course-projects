@@ -1,8 +1,8 @@
-from baseline_cnn import *
 from intensive_cnn import *
 import torch.nn as nn
 import torch.optim as optim
 import time
+import os
 import pathlib
 from Evaluation import *
 
@@ -13,8 +13,8 @@ def main():
 
 
     # Setup: initialize the hyperparameters/variables
-    num_epochs = 1           # Number of full passes through the dataset
-    batch_size = 16          # Number of samples in each minibatch
+    num_epochs = 32           # Number of full passes through the dataset
+    batch_size = 8           # Number of samples in each minibatch
     learning_rate = 0.01
     seed = np.random.seed(1) # Seed the random number generator for reproducibility
     p_val = 0.1              # Percent of the overall dataset to reserve for validation
@@ -51,6 +51,7 @@ def main():
 
 
     # Setup the training, validation, and testing dataloaders
+<<<<<<< HEAD
     # train_loader, val_loader, test_loader = create_split_loaders(batch_size, seed, transform=transform,
     #                                                              p_val=p_val, p_test=p_test,
     #                                                              shuffle=True, show_sample=False,
@@ -60,6 +61,12 @@ def main():
                                                                           p_val=p_val, p_test=p_test,
                                                                           shuffle=True, show_sample=False,
                                                                           extras=extras, z_score=conf['z_score'])
+=======
+    train_loader, val_loader, test_loader = create_balanced_split_loaders(batch_size, seed, transform=transform,
+                                                                 p_val=p_val, p_test=p_test,
+                                                                 shuffle=True, show_sample=False,
+                                                                 extras=extras, z_score=conf['z_score'])
+>>>>>>> eeda1473e9b5714c27aa1272cb2240f9644d51fd
 
     # Instantiate a BasicCNN to run on the GPU or CPU based on CUDA support
     model = IntensiveCNN()
@@ -85,11 +92,12 @@ def main():
 
         # Get the next minibatch of images, labels for training
         for minibatch_count, (images, labels) in enumerate(train_loader):
-
+            
             # Put the minibatch data in CUDA Tensors and run on the GPU if supported
             images, labels = images.to(computing_device), labels.to(computing_device)
 
             # Zero out the stored gradient (buffer) from the previous iteration
+            model.train()
             optimizer.zero_grad()
 
             # Perform the forward pass through the network and compute the loss
@@ -115,10 +123,14 @@ def main():
                         val_image, val_labels = val_image.to(computing_device), val_labels.to(computing_device)
                         val_outputs = model(val_image)
                         val_loss += criterion(val_outputs, val_labels)
+<<<<<<< HEAD
                         print('val', val_batch_count, val_loss / val_batch_count)
                         if val_batch_count == 4:
                             break
                     val_loss /= val_batch_count
+=======
+                    val_loss /= (val_batch_count + 1)
+>>>>>>> eeda1473e9b5714c27aa1272cb2240f9644d51fd
                     if val_loss < val_loss_min:
                         model_name = "epoch_{}-batch_{}-loss_{}-{}.pt".format(epoch, minibatch_count, val_loss, time.strftime("%Y%m%d-%H%M%S"))
                         torch.save(model.state_dict(), os.path.join(model_path, model_name))

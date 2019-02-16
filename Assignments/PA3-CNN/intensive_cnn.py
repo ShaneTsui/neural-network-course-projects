@@ -10,7 +10,8 @@ import torch.optim as optim
 # Data utils and dataloader
 import torchvision
 from torchvision import transforms, utils
-from xray_dataloader import ChestXrayDataset, create_split_loaders
+# from xray_dataloader import ChestXrayDataset, create_split_loaders
+from xray_imbalanced_dataloader import ImbalancedDatasetSampler, create_balanced_split_loaders
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -89,7 +90,7 @@ class IntensiveBlock(nn.Sequential):
 
 class IntensiveCNN(nn.Sequential):
 
-    def __init__(self, growth_rate=32, block_config=(6, 12, 24, 32, 16), num_init_features=64,
+    def __init__(self, growth_rate=32, block_config=(6, 12, 24, 16), num_init_features=64,
                  bn_size=4, compression_rate=0.5, drop_rate=0, num_classes=1000):
         super(IntensiveCNN, self).__init__()
 
