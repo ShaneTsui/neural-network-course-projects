@@ -22,7 +22,7 @@ def main():
     seed = np.random.seed(1) # Seed the random number generator for reproducibility
     p_val = 0.1              # Percent of the overall dataset to reserve for validation
     p_test = 0.2             # Percent of the overall dataset to reserve for testing
-    val_every_n = 500         #
+    val_every_n = 100         #
 
 
     # Set up folder for model saving
@@ -33,7 +33,7 @@ def main():
 
 
     # TODO: Convert to Tensor - you can later add other transformations, such as Scaling here
-    transform = transforms.Compose([transforms.Resize(512), transforms.ToTensor()])
+    # transform = transforms.Compose([transforms.Resize(512), transforms.ToTensor()])
 
     # resize to 224*224:
     # transform = transforms.Compose([transforms.Resize(224), transforms.ToTensor()])
@@ -42,9 +42,10 @@ def main():
     # transform = transforms.Compose([transforms.Resize(256), transforms.CenterCrop(224), transforms.ToTensor()])
 
     # random rotation:
-    # transform = transforms.Compose([transforms.RandomRotation(20, resample=Image.BILINEAR),
-    #                                transforms.Resize(512),
-    #                                transforms.ToTensor()])
+    transform = transforms.Compose([transforms.RandomRotation(20, resample=Image.BILINEAR),
+                                    transforms.CenterCrop(900),
+                                    transforms.Resize(512),
+                                    transforms.ToTensor()])
 
     # Check if your system supports CUDA
     use_cuda = torch.cuda.is_available()
@@ -112,7 +113,7 @@ def main():
             N_minibatch_loss += loss
 
             # TODO: Implement holdout-set-validation
-            if minibatch_count != 0 and minibatch_count % val_every_n == 0:
+            if minibatch_count % val_every_n == 0:
                 model.eval()
                 with torch.no_grad():
                     val_loss = 0

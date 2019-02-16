@@ -107,7 +107,7 @@ def create_balanced_split_loaders(batch_size, seed, transform=transforms.ToTenso
     print("end creating imbalanced sampler")
 
     num_workers = 1
-    pin_memory = False
+    pin_memory = True
     # If CUDA is available
     if extras:
         num_workers = extras["num_workers"]
@@ -116,17 +116,17 @@ def create_balanced_split_loaders(batch_size, seed, transform=transforms.ToTenso
     # Define the training, test, & validation DataLoaders
 
     train_loader = DataLoader(dataset, batch_size=batch_size,
-                              sampler=sample_train, num_workers=num_workers,
+                              sampler=sample_train, num_workers=4,
                               pin_memory=pin_memory)
     print("train_loader created")
 
     test_loader = DataLoader(dataset, batch_size=batch_size,
-                             sampler=sample_test, num_workers=num_workers,
+                             sampler=sample_test, num_workers=4,
                              pin_memory=pin_memory)
     print("test_loader created")
 
     val_loader = DataLoader(dataset, batch_size=batch_size,
-                            sampler=sample_val, num_workers=num_workers,
+                            sampler=sample_val, num_workers=4,
                             pin_memory=pin_memory)
     print("val_loader created")
 

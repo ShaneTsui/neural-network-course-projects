@@ -1,3 +1,4 @@
+from baseline_cnn import *
 from intensive_cnn import *
 import torch.nn as nn
 import torch.optim as optim
@@ -18,7 +19,7 @@ def main():
     seed = np.random.seed(1) # Seed the random number generator for reproducibility
     p_val = 0.1              # Percent of the overall dataset to reserve for validation
     p_test = 0.2             # Percent of the overall dataset to reserve for testing
-    val_every_n = 100         #
+    val_every_n = 500         #
 
 
     # Set up folder for model saving
@@ -50,10 +51,15 @@ def main():
 
 
     # Setup the training, validation, and testing dataloaders
-    train_loader, val_loader, test_loader = create_split_loaders(batch_size, seed, transform=transform,
-                                                                 p_val=p_val, p_test=p_test,
-                                                                 shuffle=True, show_sample=False,
-                                                                 extras=extras, z_score=conf['z_score'])
+    # train_loader, val_loader, test_loader = create_split_loaders(batch_size, seed, transform=transform,
+    #                                                              p_val=p_val, p_test=p_test,
+    #                                                              shuffle=True, show_sample=False,
+    #                                                              extras=extras, z_score=conf['z_score'])
+
+    train_loader, val_loader, test_loader = create_balanced_split_loaders(batch_size, seed, transform=transform,
+                                                                          p_val=p_val, p_test=p_test,
+                                                                          shuffle=True, show_sample=False,
+                                                                          extras=extras, z_score=conf['z_score'])
 
     # Instantiate a BasicCNN to run on the GPU or CPU based on CUDA support
     model = IntensiveCNN()
@@ -74,7 +80,7 @@ def main():
     # Begin training procedure
     for epoch in range(num_epochs):
 
-        N = 1
+        N = 50
         N_minibatch_loss = 0.0
 
         # Get the next minibatch of images, labels for training
@@ -105,14 +111,14 @@ def main():
                 model.eval()
                 with torch.no_grad():
                     val_loss = 0
-                    for val_batch_count, (val_image, val_labels) in enumerate(val_loader):
+                    for val_batch_count, (val_image, val_labels) in enumerate(val_loader, 1):
                         val_image, val_labels = val_image.to(computing_device), val_labels.to(computing_device)
                         val_outputs = model(val_image)
                         val_loss += criterion(val_outputs, val_labels)
-                        print(val_loss)
+                        print('val', val_batch_count, val_loss / val_batch_count)
                         if val_batch_count == 4:
                             break
-                    val_loss /= (val_batch_count + 1)
+                    val_loss /= val_batch_count
                     if val_loss < val_loss_min:
                         model_name = "epoch_{}-batch_{}-loss_{}-{}.pt".format(epoch, minibatch_count, val_loss, time.strftime("%Y%m%d-%H%M%S"))
                         torch.save(model.state_dict(), os.path.join(model_path, model_name))
@@ -131,18 +137,19 @@ def main():
         print("Finished", epoch + 1, "epochs of training")
     print("Training complete after", epoch, "epochs")
 
-
-    correct = 0
-    total = 0
+    # Begin testing
+    targets = torch.zeros(0, 0)
+    predicts = torch.zeros(0, 0)
     for data in test_loader:
         images, labels = data
-        outputs = model(Variable(images.cuda()))
-        predict = torch.sigmoid(outputs) > 0.5
-        l = labels.byte().to(computing_device)
-        r = (l == predict)
-        acc = torch.sum(r.float(), dim=0)
-        print(acc.item())
-        acc = acc.item() / (predict.shape[1] * predict.shape[0])
+        output = model(Variable(images.cuda()))
+        predict = torch.sigmoid(output) > 0.5
+
+        targets = torch.cat((targets, labels))
+        predicts = torch.cat((predicts, predict))
+
+    eva = Evaluation(predicts, targets)
+    eva.evaluate()
 
 
 if __name__ == "__main__":
