@@ -51,7 +51,7 @@ def main():
 
 
     # Setup the training, validation, and testing dataloaders
-<<<<<<< HEAD
+
     # train_loader, val_loader, test_loader = create_split_loaders(batch_size, seed, transform=transform,
     #                                                              p_val=p_val, p_test=p_test,
     #                                                              shuffle=True, show_sample=False,
@@ -61,12 +61,6 @@ def main():
                                                                           p_val=p_val, p_test=p_test,
                                                                           shuffle=True, show_sample=False,
                                                                           extras=extras, z_score=conf['z_score'])
-=======
-    train_loader, val_loader, test_loader = create_balanced_split_loaders(batch_size, seed, transform=transform,
-                                                                 p_val=p_val, p_test=p_test,
-                                                                 shuffle=True, show_sample=False,
-                                                                 extras=extras, z_score=conf['z_score'])
->>>>>>> eeda1473e9b5714c27aa1272cb2240f9644d51fd
 
     # Instantiate a BasicCNN to run on the GPU or CPU based on CUDA support
     model = IntensiveCNN()
@@ -115,7 +109,7 @@ def main():
             N_minibatch_loss += loss
 
             # TODO: Implement holdout-set-validation
-            if minibatch_count % val_every_n:
+            if minibatch_count % val_every_n == 0:
                 model.eval()
                 with torch.no_grad():
                     val_loss = 0
@@ -123,14 +117,7 @@ def main():
                         val_image, val_labels = val_image.to(computing_device), val_labels.to(computing_device)
                         val_outputs = model(val_image)
                         val_loss += criterion(val_outputs, val_labels)
-<<<<<<< HEAD
-                        print('val', val_batch_count, val_loss / val_batch_count)
-                        if val_batch_count == 4:
-                            break
                     val_loss /= val_batch_count
-=======
-                    val_loss /= (val_batch_count + 1)
->>>>>>> eeda1473e9b5714c27aa1272cb2240f9644d51fd
                     if val_loss < val_loss_min:
                         model_name = "epoch_{}-batch_{}-loss_{}-{}.pt".format(epoch, minibatch_count, val_loss, time.strftime("%Y%m%d-%H%M%S"))
                         torch.save(model.state_dict(), os.path.join(model_path, model_name))
