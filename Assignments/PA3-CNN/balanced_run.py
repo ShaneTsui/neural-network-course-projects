@@ -81,7 +81,7 @@ def main():
 
     #TODO: Define the loss criterion and instantiate the gradient descent optimizer
     # criterion = nn.MultiLabelSoftMarginLoss(weight=label_weights) #TODO - loss criteria are defined in the torch.nn package
-    criterion = nn.MultiLabelSoftMarginLoss()
+    criterion = nn.BCELoss()
 
     #TODO: Instantiate the gradient descent optimizer - use Adam optimizer with default parameters
     optimizer = optim.Adam(model.parameters(), lr=0.001) #TODO - optimizers are defined in the torch.optim package
