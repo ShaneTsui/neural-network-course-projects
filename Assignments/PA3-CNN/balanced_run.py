@@ -33,7 +33,7 @@ def main():
 
 
     # TODO: Convert to Tensor - you can later add other transformations, such as Scaling here
-    # transform = transforms.Compose([transforms.Resize(512), transforms.ToTensor()])
+    transform = transforms.Compose([transforms.Resize(512), transforms.ToTensor()])
 
     # resize to 224*224:
     # transform = transforms.Compose([transforms.Resize(224), transforms.ToTensor()])
@@ -42,10 +42,10 @@ def main():
     # transform = transforms.Compose([transforms.Resize(256), transforms.CenterCrop(224), transforms.ToTensor()])
 
     # random rotation:
-    transform = transforms.Compose([transforms.RandomRotation(20, resample=Image.BILINEAR),
-                                    transforms.CenterCrop(900),
-                                    transforms.Resize(512),
-                                    transforms.ToTensor()])
+    # transform = transforms.Compose([transforms.RandomRotation(20, resample=Image.BILINEAR),
+    #                                transforms.CenterCrop(900),
+    #                                transforms.Resize(512),
+    #                                transforms.ToTensor()])
 
     # Check if your system supports CUDA
     use_cuda = torch.cuda.is_available()
@@ -62,10 +62,17 @@ def main():
 
     # Setup the training, validation, and testing dataloaders
 
-    train_loader, val_loader, test_loader = create_balanced_split_loaders(batch_size, seed, transform=transform,
-                                                                         p_val=p_val, p_test=p_test,
-                                                                         shuffle=True, show_sample=False,
-                                                                         extras=extras, z_score=conf['z_score'])
+    #train_loader, val_loader, test_loader = create_balanced_split_loaders(batch_size, seed, transform=transform,
+    #                                                                     p_val=p_val, p_test=p_test,
+    #                                                                     shuffle=True, show_sample=False,
+    #                                                                     extras=extras, z_score=conf['z_score'])
+
+    train_loader, val_loader, test_loader, label_weights = create_balanced_split_loaders(batch_size, seed, transform=transform,
+                                                                 p_val=p_val, p_test=p_test,
+                                                                 shuffle=True, show_sample=False,
+                                                                 extras=extras, z_score=conf['z_score'])
+    # label_weights = label_weights.to(computing_device)
+
 
     # Instantiate a BasicCNN to run on the GPU or CPU based on CUDA support
     model = BasicCNN()
@@ -73,7 +80,8 @@ def main():
     print("Model on CUDA?", next(model.parameters()).is_cuda)
 
     #TODO: Define the loss criterion and instantiate the gradient descent optimizer
-    criterion = nn.BCELoss() #TODO - loss criteria are defined in the torch.nn package
+    # criterion = nn.MultiLabelSoftMarginLoss(weight=label_weights) #TODO - loss criteria are defined in the torch.nn package
+    criterion = nn.MultiLabelSoftMarginLoss()
 
     #TODO: Instantiate the gradient descent optimizer - use Adam optimizer with default parameters
     optimizer = optim.Adam(model.parameters(), lr=0.001) #TODO - optimizers are defined in the torch.optim package
@@ -139,21 +147,27 @@ def main():
                 N_minibatch_loss = 0.0
 
         print("Finished", epoch + 1, "epochs of training")
-    print("Training complete after", epoch, "epochs")
+    print("Training complete after", epoch + 1, "epochs")
 
     # Begin testing
-    targets = torch.zeros(0, 0)
-    predicts = torch.zeros(0, 0)
-    for data in test_loader:
-        images, labels = data
-        output = model(Variable(images.cuda()))
-        predict = torch.sigmoid(output) > 0.5
+    labels_all = []
+    predictions_all = []
+    model.eval()
+    with torch.no_grad():
+        for data in test_loader:
+            images, labels = data
+            images, labels = images.to(computing_device), labels.to(computing_device)
+            labels_all.append(labels)
+            output = model(images)
+            predictions = output > 0.5
+            predictions_all.append(predictions)
 
-        targets = torch.cat((targets, labels))
-        predicts = torch.cat((predicts, predict))
+    labels = torch.cat(labels_all, 0)
+    predctions = torch.cat(predictions_all, 0)
 
-    eva = Evaluation(predicts, targets)
-    eva.evaluate()
+    eval = Evaluation(predctions.float(), labels)
+    print(eval.accuracy())
+    print(eval.accuracy().mean())
 
 
 if __name__ == "__main__":

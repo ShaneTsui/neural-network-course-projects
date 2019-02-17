@@ -2,6 +2,7 @@ import torch
 from torch.utils.data import DataLoader
 from torch.utils.data.sampler import Sampler, SubsetRandomSampler
 from torchvision import transforms
+from PIL import Image
 
 import numpy as np
 
@@ -80,8 +81,15 @@ def create_balanced_split_loaders(batch_size, seed, transform=transforms.ToTenso
     - test_loader: (DataLoader) The iterator for the test set
     """
 
+    augmentation = transforms.Compose([transforms.RandomRotation(20, resample=Image.BILINEAR),
+                                       transforms.CenterCrop(900),
+                                       transforms.Resize(512),
+                                       transforms.ToTensor()])
+
+
     # Get create a ChestXrayDataset object
     dataset = ChestXrayDataset(transform, z_score=z_score)
+    dataset_train = ChestXrayDataset(augmentation, z_score=z_score)
 
     # Dimensions and indices of training set
     dataset_size = len(dataset)
@@ -101,7 +109,7 @@ def create_balanced_split_loaders(batch_size, seed, transform=transforms.ToTenso
     train_ind, test_ind = train_ind[test_split:], train_ind[: test_split]
 
     print("start creating imbalanced sampler")
-    sample_train = ImbalancedDatasetSampler(dataset, indices=train_ind)
+    sample_train = ImbalancedDatasetSampler(dataset_train, indices=train_ind)
     sample_test = SubsetRandomSampler(test_ind)
     sample_val = SubsetRandomSampler(val_ind)
     print("end creating imbalanced sampler")
@@ -109,13 +117,13 @@ def create_balanced_split_loaders(batch_size, seed, transform=transforms.ToTenso
     num_workers = 1
     pin_memory = True
     # If CUDA is available
-    if extras:
-        num_workers = extras["num_workers"]
-        pin_memory = extras["pin_memory"]
+    #if extras:
+    #    num_workers = extras["num_workers"]
+    #    pin_memory = extras["pin_memory"]
 
     # Define the training, test, & validation DataLoaders
 
-    train_loader = DataLoader(dataset, batch_size=batch_size,
+    train_loader = DataLoader(dataset_train, batch_size=batch_size,
                               sampler=sample_train, num_workers=4,
                               pin_memory=pin_memory)
     print("train_loader created")
@@ -130,5 +138,9 @@ def create_balanced_split_loaders(batch_size, seed, transform=transforms.ToTenso
                             pin_memory=pin_memory)
     print("val_loader created")
 
+    print("start calculating label weights")
+    label_weights = dataset.get_weights()
+    print("weights:", label_weights)
+
     # Return the training, validation, test DataLoader objects
-    return (train_loader, val_loader, test_loader)
+    return (train_loader, val_loader, test_loader, label_weights)

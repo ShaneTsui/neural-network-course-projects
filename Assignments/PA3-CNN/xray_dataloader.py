@@ -26,6 +26,7 @@ import torchvision
 from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms, utils
 from torch.utils.data.sampler import SubsetRandomSampler
+from PIL import Image
 
 # Other libraries for data manipulation and visualization
 import os
@@ -76,6 +77,8 @@ class ChestXrayDataset(Dataset):
                         7: "Pneumothorax", 8: "Consolidation", 9: "Edema",
                         10: "Emphysema", 11: "Fibrosis",
                         12: "Pleural_Thickening", 13: "Hernia"}
+
+
 
     def __len__(self):
 
@@ -144,8 +147,17 @@ class ChestXrayDataset(Dataset):
             if value in label:
                 labels.append(value)
         if not labels:
-            labels.append("No Finding")
+            labels.append("No findings")
         return labels
+
+    def get_weights(self):
+        label_counts = torch.zeros(len(self.classes))
+        for label in self.labels:
+            for key, value in self.classes.items():
+                if value in label:
+                    label_counts[key] += 1
+        label_weights = label_counts / label_counts.sum() +0.5
+        return label_weights
 
 
 def create_split_loaders(batch_size, seed, transform=transforms.ToTensor(),
@@ -177,8 +189,14 @@ def create_split_loaders(batch_size, seed, transform=transforms.ToTensor(),
     - test_loader: (DataLoader) The iterator for the test set
     """
 
+    augmentation = transforms.Compose([transforms.RandomRotation(20, resample=Image.BILINEAR),
+                                    transforms.CenterCrop(900),
+                                    transforms.Resize(512),
+                                    transforms.ToTensor()])
+
     # Get create a ChestXrayDataset object
     dataset = ChestXrayDataset(transform, z_score=z_score)
+    dataset_train = ChestXrayDataset(augmentation, z_score=z_score)
 
     # Dimensions and indices of training set
     dataset_size = len(dataset)
@@ -203,24 +221,28 @@ def create_split_loaders(batch_size, seed, transform=transforms.ToTensor(),
     sample_val = SubsetRandomSampler(val_ind)
 
     num_workers = 1
-    pin_memory = False
+    pin_memory = True
     # If CUDA is available
-    if extras:
-        num_workers = extras["num_workers"]
-        pin_memory = extras["pin_memory"]
+    #if extras:
+    #    num_workers = extras["num_workers"]
+    #    pin_memory = extras["pin_memory"]
 
     # Define the training, test, & validation DataLoaders
-    train_loader = DataLoader(dataset, batch_size=batch_size,
-                              sampler=sample_train, num_workers=num_workers,
+    train_loader = DataLoader(dataset_train, batch_size=batch_size,
+                              sampler=sample_train, num_workers=4,
                               pin_memory=pin_memory)
 
     test_loader = DataLoader(dataset, batch_size=batch_size,
-                             sampler=sample_test, num_workers=num_workers,
+                             sampler=sample_test, num_workers=4,
                              pin_memory=pin_memory)
 
     val_loader = DataLoader(dataset, batch_size=batch_size,
-                            sampler=sample_val, num_workers=num_workers,
+                            sampler=sample_val, num_workers=4,
                             pin_memory=pin_memory)
 
+    print("start calculating label weights")
+    label_weights = dataset.get_weights()
+    print("weights:", label_weights)
+
     # Return the training, validation, test DataLoader objects
-    return (train_loader, val_loader, test_loader)
+    return (train_loader, val_loader, test_loader, label_weights)
