@@ -44,6 +44,19 @@ class ImbalancedDatasetSampler(Sampler):
         self.weights = torch.DoubleTensor(weights)
         print(self.weights)
 
+        label_to_count = {}
+        train_distribution = (self.indices[i] for i in torch.multinomial(self.weights, self.num_samples, replacement=True))
+        for i in range(len(self.indices)):
+            idx = train_distribution.data[i]
+            labels = dataset.get_labels(idx)
+            for label in labels:
+                if label in label_to_count:
+                    label_to_count[label] += 1
+                else:
+                    label_to_count[label] = 1
+        print("training data distribution after resample:", label_to_count)
+
+
     def __iter__(self):
         # https://pytorch.org/docs/stable/torch.html?highlight=torch%20multinomial#torch.multinomial
         return (self.indices[i] for i in torch.multinomial(self.weights, self.num_samples, replacement=True))
