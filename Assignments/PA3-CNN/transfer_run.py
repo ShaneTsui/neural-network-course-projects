@@ -40,7 +40,7 @@ def main():
     # Setup GPU optimization if CUDA is supported
     if use_cuda:
         computing_device = torch.device("cuda")
-        extras = {"num_workers": 8, "pin_memory": True} # fix parameter: 5; finetuning: 
+        extras = {"num_workers": 4, "pin_memory": True} # fix parameter: 5; finetuning: 
         print("CUDA is supported")
     else: # Otherwise, train on the CPU
         computing_device = torch.device("cpu")
@@ -66,10 +66,10 @@ def main():
     transform = transforms.Compose([transforms.Resize(224), transforms.ToTensor(), channelCopy()])
 
     # Setup the training, validation, and testing dataloaders
-    train_loader, val_loader, test_loader = create_balanced_split_loaders(batch_size, seed, transform=transform,
-                                                                p_val=p_val, p_test=p_test,
-                                                                shuffle=True, show_sample=False,
-                                                                extras=extras, z_score=True)
+    train_loader, val_loader, test_loader, label_weights = create_balanced_split_loaders(batch_size, seed, transform=transform,
+                                                                 p_val=p_val, p_test=p_test,
+                                                                 shuffle=True, show_sample=False,
+                                                                 extras=extras, z_score=True)
     # Instantiate a BasicCNN to run on the GPU or CPU based on CUDA support
     transfer = Transfer(14, finetuning=False)
     model = transfer(imagenet)
@@ -80,7 +80,7 @@ def main():
     criterion = nn.MultiLabelSoftMarginLoss() #TODO - loss criteria are defined in the torch.nn package
 
     #TODO: Instantiate the gradient descent optimizer - use Adam optimizer with default parameters
-    optimizer = optim.Adam(filter(lambda param: param.requires_grad, model.parameters()), lr=0.0000001) #TODO - optimizers are defined in the torch.optim package
+    optimizer = optim.Adam(filter(lambda param: param.requires_grad, model.parameters()), lr=0.000002) #TODO - optimizers are defined in the torch.optim package
 
     # Track the loss across training
     total_loss = []
@@ -129,7 +129,7 @@ def main():
                     
                     for val_batch_count, (val_image, val_labels) in enumerate(val_loader):   
                         
-                        # print('validating on {0} minibatch'.format(val_batch_count))
+                        print('validating on {0} minibatch'.format(val_batch_count))
                         val_image, val_labels = val_image.to(computing_device), val_labels.to(computing_device)
                         val_outputs = model(val_image)
                         val_loss += criterion(val_outputs, val_labels)
@@ -137,15 +137,17 @@ def main():
                     val_loss /= val_batch_count
                     print('validation loss: {0}'.format(val_loss))
                     avg_minibatch_val_loss.append(val_loss)
+                    model_name = "epoch_{}-batch_{}-loss_{}-{}.pt".format(epoch, minibatch_count, val_loss, time.strftime("%Y%m%d-%H%M%S"))
+                    torch.save(model.state_dict(), os.path.join(model_path, model_name))
                     if val_loss < val_loss_min:
-                        model_name = "epoch_{}-batch_{}-loss_{}-{}.pt".format(epoch, minibatch_count, val_loss, time.strftime("%Y%m%d-%H%M%S"))
-                        torch.save(model.state_dict(), os.path.join(model_path, model_name))
+                        torch.save(model.state_dict(), os.path.join(model_path, 'best model'))
                         val_loss_min = val_loss
                     print('val: ', [l.item() for l in avg_minibatch_val_loss])
 
             if minibatch_count % N == 0:
                 # Print the loss averaged over the last N mini-batches
-                N_minibatch_loss /= N
+                if minibatch_count > 0:
+                    N_minibatch_loss /= N  
                 print('Epoch %d, average minibatch %d loss: %.3f' %
                     (epoch + 1, minibatch_count, N_minibatch_loss))
 
@@ -156,6 +158,7 @@ def main():
 
         print("Finished", epoch + 1, "epochs of training")
     print("Training complete after", epoch, "epochs")
+    
 
     # Begin testing
     labels_all = []
@@ -180,7 +183,8 @@ def main():
     print('pre: ', eval.precision().mean())
     print('rec: ', eval.recall())
     print('rec: ', eval.recall().mean())
-
+    
+    
 
 if __name__ == "__main__":
     main()
