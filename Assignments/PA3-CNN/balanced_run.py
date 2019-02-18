@@ -17,7 +17,7 @@ def main():
 
     # Setup: initialize the hyperparameters/variables
     num_epochs = 1           # Number of full passes through the dataset
-    batch_size = 16          # Number of samples in each minibatch
+    batch_size = 20          # Number of samples in each minibatch
     learning_rate = 0.001
     seed = np.random.seed(1) # Seed the random number generator for reproducibility
     p_val = 0.1              # Percent of the overall dataset to reserve for validation
