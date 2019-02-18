@@ -2,6 +2,7 @@ import torch
 from torch.utils.data import DataLoader
 from torch.utils.data.sampler import Sampler, SubsetRandomSampler
 from torchvision import transforms
+from torch import nn
 from PIL import Image
 
 import numpy as np
@@ -64,6 +65,25 @@ class ImbalancedDatasetSampler(Sampler):
         return self.num_samples
 
 
+class GaussianNoise(nn.Module):
+    def __init__(self, stddev=0.2, prob=0.8):
+        super().__init__()
+        self.stddev = stddev
+        self.prob = prob
+
+    def forward(self, din):
+        if np.random.random() < self.prob:
+            return din
+        pix = np.array(din)
+        noise = np.random.randn(pix.size) * self.stddev
+        pix = pix + np.reshape(noise, pix.shape)
+        dout = Image.fromarray(pix)
+        # print("add gaussian noise")
+        return dout
+
+        # return din + torch.autograd.Variable(torch.randn(din.size()).cuda() * self.stddev)
+
+
 def create_balanced_split_loaders(batch_size, seed, transform=transforms.ToTensor(),
                          p_val=0.1, p_test=0.2, shuffle=True,
                          show_sample=False, extras={}, z_score=False):
@@ -91,13 +111,10 @@ def create_balanced_split_loaders(batch_size, seed, transform=transforms.ToTenso
     - test_loader: (DataLoader) The iterator for the test set
     """
 
-    augmentation = transforms.Compose([transforms.RandomRotation(20, resample=Image.BILINEAR),
-                                       transforms.RandomCrop(900),
+    augmentation = transforms.Compose([transforms.RandomRotation(10, resample=Image.BILINEAR),
+                                       GaussianNoise(),
                                        transforms.Resize(512),
                                        transforms.ToTensor()])
-
-    if np.random.random() < 0.8:
-        augmentation = transform
 
     # Get create a ChestXrayDataset object
     dataset = ChestXrayDataset(transform, z_score=z_score)
@@ -150,9 +167,9 @@ def create_balanced_split_loaders(batch_size, seed, transform=transforms.ToTenso
                             pin_memory=pin_memory)
     print("val_loader created")
 
-    print("start calculating label weights")
+    #print("start calculating label weights")
     label_weights = dataset.get_weights()
-    print("weights:", label_weights)
+    #print("weights:", label_weights)
 
     # Return the training, validation, test DataLoader objects
     return (train_loader, val_loader, test_loader, label_weights)
