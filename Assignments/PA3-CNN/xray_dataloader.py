@@ -68,8 +68,8 @@ class ChestXrayDataset(Dataset):
         self.transform = transform
         self.z_score = z_score
         self.color = color
-        self.image_dir = "/datasets/ChestXray-NIHCC/images/"
-        self.image_info = pd.read_csv("/datasets/ChestXray-NIHCC/Data_Entry_2017.csv")
+        self.image_dir = "./datasets/Images/"
+        self.image_info = pd.read_csv("./datasets/Data_Entry_2017.csv")
         self.image_filenames = self.image_info["Image Index"]
         self.labels = self.image_info["Finding Labels"]
         self.classes = {0: "Atelectasis", 1: "Cardiomegaly", 2: "Effusion",

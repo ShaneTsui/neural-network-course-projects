@@ -1,33 +1,38 @@
 from intensive_cnn import *
-import torch.nn as nn
 import torch.optim as optim
 import time
 import os
 import pathlib
 from Evaluation import *
+from loss import weighted_loss, w_cel_loss
+
 
 def main():
 
     conf = {}
     conf['z_score'] = True
 
-
     # Setup: initialize the hyperparameters/variables
-    num_epochs = 32           # Number of full passes through the dataset
+    num_epochs = 1           # Number of full passes through the dataset
     batch_size = 8           # Number of samples in each minibatch
-    learning_rate = 0.01
+    learning_rate = 1e-2
     seed = np.random.seed(1) # Seed the random number generator for reproducibility
     p_val = 0.1              # Percent of the overall dataset to reserve for validation
     p_test = 0.2             # Percent of the overall dataset to reserve for testing
-    val_every_n = 500         #
-
+    val_every_n = 100        #
 
     # Set up folder for model saving
-    model_path = '{}/models/baseline/{}/'.format(os.getcwd(), time.strftime("%Y%m%d-%H%M%S"))
+    cur_time = time.strftime("%Y%m%d-%H%M%S")
+    model_path = '{}/models/intensive/{}/'.format(os.getcwd(), cur_time)
     model_pathlib = pathlib.Path(model_path)
     if not model_pathlib.exists():
         pathlib.Path(model_pathlib).mkdir(parents=True, exist_ok=True)
 
+    # Set up folder for model saving
+    result_path = '{}/results/intensive/{}/'.format(os.getcwd(), cur_time)
+    result_pathlib = pathlib.Path(result_path)
+    if not result_pathlib.exists():
+        pathlib.Path(result_pathlib).mkdir(parents=True, exist_ok=True)
 
     # TODO: Convert to Tensor - you can later add other transformations, such as Scaling here
     transform = transforms.Compose([transforms.Resize(512), transforms.ToTensor()])
@@ -45,19 +50,7 @@ def main():
         extras = False
         print("CUDA NOT supported")
 
-    # double the loss for class 1
-    class_weight = torch.FloatTensor([1.0, 2.0, 1.0])
-    multi_criterion = nn.MultiLabelSoftMarginLoss(weight=class_weight, reduce=False)
-
-
-    # Setup the training, validation, and testing dataloaders
-
-    # train_loader, val_loader, test_loader = create_split_loaders(batch_size, seed, transform=transform,
-    #                                                              p_val=p_val, p_test=p_test,
-    #                                                              shuffle=True, show_sample=False,
-    #                                                              extras=extras, z_score=conf['z_score'])
-
-    train_loader, val_loader, test_loader = create_balanced_split_loaders(batch_size, seed, transform=transform,
+    train_loader, val_loader, test_loader, _ = create_balanced_split_loaders(batch_size, seed, transform=transform,
                                                                           p_val=p_val, p_test=p_test,
                                                                           shuffle=True, show_sample=False,
                                                                           extras=extras, z_score=conf['z_score'])
@@ -68,15 +61,20 @@ def main():
     print("Model on CUDA?", next(model.parameters()).is_cuda)
 
     #TODO: Define the loss criterion and instantiate the gradient descent optimizer
-    criterion = nn.MultiLabelSoftMarginLoss() #TODO - loss criteria are defined in the torch.nn package
+    # criterion = nn.MultiLabelSoftMarginLoss() #TODO - loss criteria are defined in the torch.nn package
+    # criterion = weighted_loss() #TODO - loss criteria are defined in the torch.nn package
+    criterion = w_cel_loss() #TODO - loss criteria are defined in the torch.nn package
 
     #TODO: Instantiate the gradient descent optimizer - use Adam optimizer with default parameters
     optimizer = optim.Adam(model.parameters(), lr=learning_rate) #TODO - optimizers are defined in the torch.optim package
 
-    # Track the loss across training
+    # train: Track the loss across training
     total_loss = []
-    avg_minibatch_loss = []
+    avg_train_minibatch_loss = []
+
+    # val: Track the loss across validation
     val_loss_min = float('inf')
+    avg_val_minibatch_loss = []
 
     # Begin training procedure
     for epoch in range(num_epochs):
@@ -108,20 +106,26 @@ def main():
             total_loss.append(loss.item())
             N_minibatch_loss += loss
 
+            print("minibatch {}, train loss {}".format(minibatch_count, loss.item()))
+
             # TODO: Implement holdout-set-validation
-            if minibatch_count % val_every_n == 0:
-                model.eval()
-                with torch.no_grad():
-                    val_loss = 0
-                    for val_batch_count, (val_image, val_labels) in enumerate(val_loader, 1):
-                        val_image, val_labels = val_image.to(computing_device), val_labels.to(computing_device)
-                        val_outputs = model(val_image)
-                        val_loss += criterion(val_outputs, val_labels)
-                    val_loss /= val_batch_count
-                    if val_loss < val_loss_min:
-                        model_name = "epoch_{}-batch_{}-loss_{}-{}.pt".format(epoch, minibatch_count, val_loss, time.strftime("%Y%m%d-%H%M%S"))
-                        torch.save(model.state_dict(), os.path.join(model_path, model_name))
-                        val_loss_min = val_loss
+            # if minibatch_count % val_every_n == 0:
+            #     model.eval()
+            #     with torch.no_grad():
+            #         val_loss = 0
+            #         for val_batch_count, (val_image, val_labels) in enumerate(val_loader, 1):
+            #             val_image, val_labels = val_image.to(computing_device), val_labels.to(computing_device)
+            #             val_outputs = model(val_image)
+            #             loss = criterion(val_outputs, val_labels)
+            #             val_loss += loss
+            #
+            #         val_loss /= (val_batch_count + 1)
+            #         print("mini batch {}, val loss{}".format(minibatch_count, val_loss))
+            #         avg_val_minibatch_loss.append(val_loss.cpu().numpy())
+            #         if val_loss < val_loss_min:
+            #             model_name = "epoch_{}-batch_{}-loss_{}-{}.pt".format(epoch, minibatch_count, val_loss, time.strftime("%Y%m%d-%H%M%S"))
+            #             torch.save(model.state_dict(), os.path.join(model_path, model_name))
+            #             val_loss_min = val_loss
 
             if minibatch_count % N == 0:
                 # Print the loss averaged over the last N mini-batches
@@ -130,25 +134,35 @@ def main():
                       (epoch + 1, minibatch_count, N_minibatch_loss))
 
                 # Add the averaged loss over N minibatches and reset the counter
-                avg_minibatch_loss.append(N_minibatch_loss)
+                avg_train_minibatch_loss.append(N_minibatch_loss.item())
                 N_minibatch_loss = 0.0
 
         print("Finished", epoch + 1, "epochs of training")
     print("Training complete after", epoch, "epochs")
 
+    np.savetxt('{}train_loss.csv'.format(result_path), np.array(total_loss), delimiter=',')
+    np.savetxt('{}train_batch_loss.csv'.format(result_path), np.array(avg_train_minibatch_loss), delimiter=',')
+    np.savetxt('{}val_batch_loss.csv'.format(result_path), np.array(avg_val_minibatch_loss), delimiter=',')
+
     # Begin testing
-    targets = torch.zeros(0, 0)
-    predicts = torch.zeros(0, 0)
-    for data in test_loader:
-        images, labels = data
-        output = model(Variable(images.cuda()))
-        predict = torch.sigmoid(output) > 0.5
-
-        targets = torch.cat((targets, labels))
-        predicts = torch.cat((predicts, predict))
-
-    eva = Evaluation(predicts, targets)
-    eva.evaluate()
+    # labels_all = []
+    # predictions_all = []
+    # model.eval()
+    # with torch.no_grad():
+    #     for data in test_loader:
+    #         images, labels = data
+    #         images, labels = images.to(computing_device), labels.to(computing_device)
+    #         labels_all.append(labels)
+    #         output = model(images)
+    #         predictions = output > 0.5
+    #         predictions_all.append(predictions)
+    #
+    # labels = torch.cat(labels_all, 0)
+    # predctions = torch.cat(predictions_all, 0)
+    #
+    # eval = Evaluation(predctions.float(), labels)
+    # print(eval.accuracy())
+    # print(eval.accuracy().mean())
 
 
 if __name__ == "__main__":

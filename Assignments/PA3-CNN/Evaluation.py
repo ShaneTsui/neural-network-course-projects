@@ -52,7 +52,7 @@ class Evaluation:
                                 matrix[cls][tgt_cls] += 1
                 else:
                     if target:
-                        matrix[cls][-1] += 1
+                        matrix[-1][cls] += 1
                     else:
                         matrix[-1][-1] += 1
         return matrix / self.predicts.shape[0]

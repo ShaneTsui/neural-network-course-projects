@@ -130,9 +130,9 @@ def main():
                         val_outputs = model(val_image)
                         val_loss += criterion(val_outputs, val_labels)
                         print('val', val_batch_count, val_loss/val_batch_count)
-                    val_loss /= val_batch_count
+                    val_loss /= (val_batch_count + 1)
                     if val_loss < val_loss_min:
-                        model_name = "epoch_{}-batch_{}-loss_{}-{}.pt".format(epoch, minibatch_count, val_loss, time.strftime("%Y%m%d-%H%M%S"))
+                        model_name = "epoch_{}-batch_{}-{}-loss_{}.pt".format(epoch, minibatch_count, time.strftime("%Y%m%d-%H%M%S"), val_loss)
                         torch.save(model.state_dict(), os.path.join(model_path, model_name))
                         val_loss_min = val_loss
 

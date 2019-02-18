@@ -68,7 +68,6 @@ def create_balanced_split_loaders(batch_size, seed, transform=transforms.ToTenso
                          p_val=0.1, p_test=0.2, shuffle=True,
                          show_sample=False, extras={}, z_score=False):
     """ Creates the DataLoader objects for the training, validation, and test sets.
-
     Params:
     -------
     - batch_size: (int) mini-batch size to load at a time
@@ -85,7 +84,6 @@ def create_balanced_split_loaders(batch_size, seed, transform=transforms.ToTenso
         - pin_memory: (bool) For use with CUDA - copy tensors into pinned memory
                   (set to True if using a GPU)
         Otherwise, extras is an empty dict.
-
     Returns:
     --------
     - train_loader: (DataLoader) The iterator for the training set
@@ -128,7 +126,7 @@ def create_balanced_split_loaders(batch_size, seed, transform=transforms.ToTenso
     sample_val = SubsetRandomSampler(val_ind)
     print("end creating imbalanced sampler")
 
-    num_workers = 1
+    num_workers = 4
     pin_memory = True
     # If CUDA is available
     #if extras:
