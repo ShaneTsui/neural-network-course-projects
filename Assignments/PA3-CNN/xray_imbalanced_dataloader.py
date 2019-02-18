@@ -45,9 +45,9 @@ class ImbalancedDatasetSampler(Sampler):
         print(self.weights)
 
         label_to_count = {}
-        train_distribution = (self.indices[i] for i in torch.multinomial(self.weights, self.num_samples, replacement=True))
+        train_distribution = [self.indices[i] for i in torch.multinomial(self.weights, self.num_samples, replacement=True)]
         for i in range(len(self.indices)):
-            idx = train_distribution.data[i]
+            idx = train_distribution[i]
             labels = dataset.get_labels(idx)
             for label in labels:
                 if label in label_to_count:
@@ -55,7 +55,6 @@ class ImbalancedDatasetSampler(Sampler):
                 else:
                     label_to_count[label] = 1
         print("training data distribution after resample:", label_to_count)
-
 
     def __iter__(self):
         # https://pytorch.org/docs/stable/torch.html?highlight=torch%20multinomial#torch.multinomial
@@ -95,10 +94,12 @@ def create_balanced_split_loaders(batch_size, seed, transform=transforms.ToTenso
     """
 
     augmentation = transforms.Compose([transforms.RandomRotation(20, resample=Image.BILINEAR),
-                                       transforms.CenterCrop(900),
+                                       transforms.RandomCrop(900),
                                        transforms.Resize(512),
                                        transforms.ToTensor()])
 
+    if np.random.random() < 0.8:
+        augmentation = transform
 
     # Get create a ChestXrayDataset object
     dataset = ChestXrayDataset(transform, z_score=z_score)

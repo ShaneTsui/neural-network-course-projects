@@ -18,7 +18,7 @@ def main():
     # Setup: initialize the hyperparameters/variables
     num_epochs = 1           # Number of full passes through the dataset
     batch_size = 16          # Number of samples in each minibatch
-    learning_rate = 0.001
+    learning_rate = 0.00001
     seed = np.random.seed(1) # Seed the random number generator for reproducibility
     p_val = 0.1              # Percent of the overall dataset to reserve for validation
     p_test = 0.2             # Percent of the overall dataset to reserve for testing
@@ -84,7 +84,7 @@ def main():
     criterion = nn.BCELoss()
 
     #TODO: Instantiate the gradient descent optimizer - use Adam optimizer with default parameters
-    optimizer = optim.Adam(model.parameters(), lr=0.001) #TODO - optimizers are defined in the torch.optim package
+    optimizer = optim.Adam(model.parameters(), lr=learning_rate) #TODO - optimizers are defined in the torch.optim package
 
     # Track the loss across training
     total_loss = []
