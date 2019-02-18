@@ -20,16 +20,41 @@ class Evaluation:
         self.TN = torch.sum(torch.isnan(confusion_vector), dim=0).double()
         self.FN= torch.sum(confusion_vector == 0, dim=0).double()
 
+        self.acc = torch.sum((self.predicts == self.targets).double(), dim=0) / self.predicts.shape[0]
+        self.pre = self.TP / (self.TP + self.FP)
+        self.rec = self.TP / (self.TP + self.FN)
+        self.bcr = (self.pre + self. rec) / 2
+
+        self.acc[torch.isnan(self.acc)] = 0
+        self.pre[torch.isnan(self.pre)] = 0
+        self.rec[torch.isnan(self.rec)] = 0
+        self.bcr[torch.isnan(self.bcr)] = 0
+
         print(self.TP, self.FP, self.TN, self.FN)
 
     def accuracy(self):
-        return torch.sum((self.predicts == self.targets).double(), dim=0) / self.predicts.shape[0]
+        return self.acc
 
     def precision(self):
-        return self.TP / (self.TP + self.FP)
+        return self.pre
 
     def recall(self):
-        return self.TP / (self.TP + self.FN)
+        return self.rec
+
+    def BCR(self):
+        return self.bcr
+
+    def avg_accuracy(self):
+        return torch.mean(self.acc)
+
+    def avg_precision(self):
+        return torch.mean(self.pre)
+
+    def avg_recall(self):
+        return torch.mean(self.rec)
+
+    def avg_BCR(self):
+        return torch.mean(self.bcr)
 
     def confusion_matrix(self):
         '''
