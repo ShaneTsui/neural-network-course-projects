@@ -104,7 +104,7 @@ for epoch in range(num_epochs):
         #             val_image, val_labels = val_image.to(computing_device), val_labels.to(computing_device)
         #             val_outputs = model(val_image)
         #             val_loss += criterion(val_outputs, val_labels)
-        #         val_loss /= val_batch_count
+        #         val_loss /= (val_batch_count + 1)
         #         if val_loss < val_loss_min:
         #             model_name = "epoch_{}-batch_{}-loss_{}-{}.pt".format(epoch, minibatch_count, val_loss, time.strftime("%Y%m%d-%H%M%S"))
         #             torch.save(model.state_dict(), os.path.join(model_path, model_name))

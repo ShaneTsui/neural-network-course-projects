@@ -5,6 +5,9 @@ import time
 import os
 import pathlib
 from Evaluation import *
+from loss import w_cel_loss
+from torch.optim import lr_scheduler
+
 
 def main():
 
@@ -13,13 +16,13 @@ def main():
 
 
     # Setup: initialize the hyperparameters/variables
-    num_epochs = 32           # Number of full passes through the dataset
-    batch_size = 8           # Number of samples in each minibatch
-    learning_rate = 0.01
+    num_epochs = 1           # Number of full passes through the dataset
+    batch_size = 32           # Number of samples in each minibatch
+    learning_rate = 0.001
     seed = np.random.seed(1) # Seed the random number generator for reproducibility
     p_val = 0.1              # Percent of the overall dataset to reserve for validation
     p_test = 0.2             # Percent of the overall dataset to reserve for testing
-    val_every_n = 500         #
+    val_every_n = 100         #
 
 
     # Set up folder for model saving
@@ -46,8 +49,8 @@ def main():
         print("CUDA NOT supported")
 
     # double the loss for class 1
-    class_weight = torch.FloatTensor([1.0, 2.0, 1.0])
-    multi_criterion = nn.MultiLabelSoftMarginLoss(weight=class_weight, reduce=False)
+    # class_weight = torch.FloatTensor([1.0, 2.0, 1.0])
+    # multi_criterion = nn.MultiLabelSoftMarginLoss(weight=class_weight, reduce=False)
 
 
     # Setup the training, validation, and testing dataloaders
@@ -68,7 +71,7 @@ def main():
     print("Model on CUDA?", next(model.parameters()).is_cuda)
 
     #TODO: Define the loss criterion and instantiate the gradient descent optimizer
-    criterion = nn.MultiLabelSoftMarginLoss() #TODO - loss criteria are defined in the torch.nn package
+    criterion = w_cel_loss() #TODO - loss criteria are defined in the torch.nn package
 
     #TODO: Instantiate the gradient descent optimizer - use Adam optimizer with default parameters
     optimizer = optim.Adam(model.parameters(), lr=learning_rate) #TODO - optimizers are defined in the torch.optim package
@@ -117,11 +120,12 @@ def main():
                         val_image, val_labels = val_image.to(computing_device), val_labels.to(computing_device)
                         val_outputs = model(val_image)
                         val_loss += criterion(val_outputs, val_labels)
-                    val_loss /= val_batch_count
+                    val_loss /= (val_batch_count + 1)
                     if val_loss < val_loss_min:
                         model_name = "epoch_{}-batch_{}-loss_{}-{}.pt".format(epoch, minibatch_count, val_loss, time.strftime("%Y%m%d-%H%M%S"))
                         torch.save(model.state_dict(), os.path.join(model_path, model_name))
                         val_loss_min = val_loss
+                # scheduler = lr_scheduler.ReduceLROnPlateau(optimizer, 'min')
 
             if minibatch_count % N == 0:
                 # Print the loss averaged over the last N mini-batches
@@ -137,18 +141,24 @@ def main():
     print("Training complete after", epoch, "epochs")
 
     # Begin testing
-    targets = torch.zeros(0, 0)
-    predicts = torch.zeros(0, 0)
-    for data in test_loader:
-        images, labels = data
-        output = model(Variable(images.cuda()))
-        predict = torch.sigmoid(output) > 0.5
+    labels_all = []
+    predictions_all = []
+    model.eval()
+    with torch.no_grad():
+        for data in test_loader:
+            images, labels = data
+            images, labels = images.to(computing_device), labels.to(computing_device)
+            labels_all.append(labels)
+            output = model(images)
+            predictions = output > 0.5
+            predictions_all.append(predictions)
 
-        targets = torch.cat((targets, labels))
-        predicts = torch.cat((predicts, predict))
+    labels = torch.cat(labels_all, 0)
+    predctions = torch.cat(predictions_all, 0)
 
-    eva = Evaluation(predicts, targets)
-    eva.evaluate()
+    eval = Evaluation(predctions.float(), labels)
+    print(eval.accuracy())
+    print(eval.accuracy().mean())
 
 
 if __name__ == "__main__":
