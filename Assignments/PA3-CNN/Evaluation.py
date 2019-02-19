@@ -68,22 +68,22 @@ class Evaluation:
               1  |  1  |   + (current, current)
               1  |  0  |   + all (current, other ground truth)
         '''
-        num_classes = self.predicts.shape[1] + 1
-        matrix = np.zeros(shape=(num_classes, num_classes))
+        num_classes = self.predicts.shape[1]
+        matrix = np.zeros(shape=(num_classes + 1, num_classes))
         for predicts, targets in zip(self.predicts, self.targets):
             for cls, (pred, target) in enumerate(zip(predicts, targets)):
                 if pred:
                     if target:
                         matrix[cls][cls] += 1
                     else:
+                        n_wrong = sum(targets)
                         for tgt_cls, tar in enumerate(targets):
                             if tar:
-                                matrix[cls][tgt_cls] += 1
+                                matrix[cls][tgt_cls] += 1/n_wrong
                 else:
                     if target:
                         matrix[-1][cls] += 1
-                    else:
-                        matrix[-1][-1] += 1
+                    
         self.confusion = matrix / self.predicts.shape[0]
         return self.confusion
 
