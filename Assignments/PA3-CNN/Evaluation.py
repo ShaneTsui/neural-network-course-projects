@@ -5,6 +5,7 @@ from mpl_toolkits.axes_grid1 import make_axes_locatable
 import matplotlib
 import matplotlib.pyplot as plt
 
+
 class Evaluation:
 
     # torch : k-hot encoding
@@ -60,14 +61,15 @@ class Evaluation:
     def avg_BCR(self):
         return torch.mean(self.bcr)
 
+    '''
     def confusion_matrix(self):
-        '''
+        
             pred | tar |   Action
               0  |  0  |   + (no disease, no disease)
               0  |  1  |   + (current, no disease presented)
               1  |  1  |   + (current, current)
               1  |  0  |   + all (current, other ground truth)
-        '''
+        
         num_classes = self.predicts.shape[1] + 1
         matrix = np.zeros(shape=(num_classes, num_classes))
         for predicts, targets in zip(self.predicts, self.targets):
@@ -76,9 +78,10 @@ class Evaluation:
                     if target:
                         matrix[cls][cls] += 1
                     else:
+                        n_wrong = sum(targets)
                         for tgt_cls, tar in enumerate(targets):
                             if tar:
-                                matrix[cls][tgt_cls] += 1
+                                matrix[cls][tgt_cls] += 1/n_wrong
                 else:
                     if target:
                         matrix[-1][cls] += 1
@@ -86,6 +89,59 @@ class Evaluation:
                         matrix[-1][-1] += 1
         self.confusion = matrix / self.predicts.shape[0]
         return self.confusion
+        '''
+
+    def confusion_matrix(self):
+        d = self.targets.shape[1]
+        conf = np.zeros(shape=(d+1, d+1))
+
+        for (y_true, y_pred) in zip(self.targets, self.predicts):
+            y_true = y_true.cpu().numpy()
+            y_pred = y_pred.cpu().numpy()
+
+            indices_tar = set(y_true.nonzero()[0])
+            indices_pred = set(y_pred.nonzero()[0])
+            intersection = indices_tar & indices_pred
+
+            # target no disease, predcition no disease
+            if len(indices_tar) == 0 and len(indices_pred) == 0:
+                conf[d][d] += 1
+            # target no disease, predcition has
+            elif len(indices_tar) == 0 and len(indices_pred) > 0:
+                for ind in indices_pred:
+                    conf[ind][d] += 1
+
+            # target has, prediction no disease
+            elif len(indices_tar) and len(indices_pred) == 0:
+                for ind in indices_pred:
+                    conf[d][ind] += 1
+
+            # target has, prediction has
+            else:
+                if len(intersection) == 0:
+                    for i in indices_pred:
+                        for j in indices_tar:
+                            conf[i][j] += 1
+                else:
+                    for k in intersection:
+                        conf[k][k] += 1
+                    tar2 = indices_tar - intersection
+                    pred2 = indices_pred - intersection
+                    if len(tar2) == 0 and len(pred2) == 0:
+                        continue
+                    elif len(tar2) == 0 and len(pred2) > 0:
+                        for ind in pred2:
+                            conf[ind][d] += 1
+                    elif len(tar2) > 0 and len(pred2) == 0:
+                        for ind in tar2:
+                            conf[d][ind] += 1
+                    else:
+                        for i in pred2:
+                            for j in tar2:
+                                conf[i][j] += 1
+
+        self.confusion = conf / sum(conf)
+        return conf
 
     def heatmap(self, data, row_labels, col_labels, ax=None, cbar_kw={}, cbarlabel="", **kwargs):
         if not ax:
@@ -170,8 +226,7 @@ class Evaluation:
 
         fig, ax = plt.subplots(figsize=(15, 15))
 
-        im = self.heatmap(confusion, predict, target, ax=ax,
-                     cmap="YlGn", cbarlabel="confusion matrix")
+        im = self.heatmap(confusion, predict, target, ax=ax, cmap="YlGn", cbarlabel="confusion matrix")
         texts = self.annotate_heatmap(im, valfmt="{x:.4f} t")
 
         fig.tight_layout()
@@ -190,6 +245,7 @@ class Evaluation:
         print('average_BCR:', self.avg_BCR())
         print('confusion_matrix', self.confusion_matrix())
 
+        print("plot the confusion matrix: ")
         self.plot_confusion_matrix()
 
 
