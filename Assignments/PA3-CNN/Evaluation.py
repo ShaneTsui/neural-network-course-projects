@@ -1,11 +1,15 @@
 import numpy as np
 import torch
 
+from mpl_toolkits.axes_grid1 import make_axes_locatable
+import matplotlib
+import matplotlib.pyplot as plt
 
 class Evaluation:
 
     # torch : k-hot encoding
     def __init__(self, predicts, targets):
+        self.confusion = None
         self.predicts = predicts
         self.targets = targets
 
@@ -80,13 +84,113 @@ class Evaluation:
                         matrix[-1][cls] += 1
                     else:
                         matrix[-1][-1] += 1
-        return matrix / self.predicts.shape[0]
+        self.confusion = matrix / self.predicts.shape[0]
+        return self.confusion
+
+    def heatmap(self, data, row_labels, col_labels, ax=None, cbar_kw={}, cbarlabel="", **kwargs):
+        if not ax:
+            ax = plt.gca()
+
+        # Plot the heatmap
+        im = ax.imshow(data, **kwargs)
+
+        # Create colorbar
+        # cbar = ax.figure.colorbar(im, ax=ax, **cbar_kw)
+        # cbar.ax.set_ylabel(cbarlabel, rotation=-90, va="bottom")
+
+        divider = make_axes_locatable(ax)
+        cax = divider.append_axes("right", size="5%", pad=0.05)
+        plt.colorbar(im, cax=cax)
+
+        ax.set_xticks(np.arange(data.shape[1]))
+        ax.set_yticks(np.arange(data.shape[0]))
+        ax.set_xticklabels(col_labels)
+        ax.set_yticklabels(row_labels)
+
+        ax.tick_params(top=True, bottom=False,
+                       labeltop=True, labelbottom=False)
+
+        plt.setp(ax.get_xticklabels(), rotation=-30, ha="right",
+                 rotation_mode="anchor")
+
+        for edge, spine in ax.spines.items():
+            spine.set_visible(False)
+
+        ax.set_xticks(np.arange(data.shape[1] + 1) - .5, minor=True)
+        ax.set_yticks(np.arange(data.shape[0] + 1) - .5, minor=True)
+        ax.grid(which="minor", color="w", linestyle='-', linewidth=3)
+        ax.tick_params(which="minor", bottom=False, left=False)
+
+        return im
+
+    def annotate_heatmap(self, im, data=None, valfmt="{x:.2f}",
+                         textcolors=["black", "white"],
+                         threshold=None, **textkw):
+        if not isinstance(data, (list, np.ndarray)):
+            data = im.get_array()
+
+        if threshold is not None:
+            threshold = im.norm(threshold)
+        else:
+            threshold = im.norm(data.max()) / 2.
+
+        kw = dict(horizontalalignment="center",
+                  verticalalignment="center")
+        kw.update(textkw)
+
+        if isinstance(valfmt, str):
+            valfmt = matplotlib.ticker.StrMethodFormatter(valfmt)
+
+        texts = []
+        for i in range(data.shape[0]):
+            for j in range(data.shape[1]):
+                kw.update(color=textcolors[im.norm(data[i, j]) > threshold])
+                text = im.axes.text(j, i, valfmt(data[i, j], None), **kw)
+                texts.append(text)
+
+        return texts
+
+    def plot_confusion_matrix(self, confusion=None):
+        if confusion is None:
+            confusion = self.confusion
+
+        if confusion is None:
+            confusion = self.confusion_matrix()
+
+        predict = ["Atelectasis", "Cardiomegaly", "Effusion",
+                   "Infiltration", "Mass", "Nodule", "Pneumonia",
+                   "Pneumothorax", "Consolidation", "Edema",
+                   "Emphysema", "Fibrosis",
+                   "Pleural_Thickening", "Hernia", "No Findings"]
+        target = ["Atelectasis", "Cardiomegaly", "Effusion",
+                  "Infiltration", "Mass", "Nodule", "Pneumonia",
+                  "Pneumothorax", "Consolidation", "Edema",
+                  "Emphysema", "Fibrosis",
+                  "Pleural_Thickening", "Hernia", "No Findings"]
+
+        fig, ax = plt.subplots(figsize=(15, 15))
+
+        im = self.heatmap(confusion, predict, target, ax=ax,
+                     cmap="YlGn", cbarlabel="confusion matrix")
+        texts = self.annotate_heatmap(im, valfmt="{x:.4f} t")
+
+        fig.tight_layout()
+        plt.show()
 
     def evaluate(self):
-        print(self.accuracy())
-        print(self.precision())
-        print(self.recall())
-        print(self.confusion_matrix())
+        print('accuracy:', self.accuracy())
+        print('precision:', self.precision())
+        print('recall:', self.recall())
+        print('BCR:', self.BCR())
+
+        print('avg_accuracy:', self.avg_accuracy())
+
+        print('average_precision:', self.avg_precision())
+        print('average_recall:', self.avg_recall())
+        print('average_BCR:', self.avg_BCR())
+        print('confusion_matrix', self.confusion_matrix())
+
+        self.plot_confusion_matrix()
 
 
 if __name__=="__main__":
