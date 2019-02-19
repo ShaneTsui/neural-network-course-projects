@@ -226,7 +226,7 @@ class Evaluation:
 
         fig, ax = plt.subplots(figsize=(15, 15))
 
-        im = self.heatmap(confusion, predict, target, ax=ax, cmap="YlGn", cbarlabel="confusion matrix")
+        im = self.heatmap(confusion, predict, target, ax=ax, cmap="RdPu", cbarlabel="confusion matrix")
         texts = self.annotate_heatmap(im, valfmt="{x:.4f} t")
 
         fig.tight_layout()
