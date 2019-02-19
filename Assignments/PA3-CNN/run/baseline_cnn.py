@@ -16,23 +16,13 @@
 
 
 # PyTorch and neural network imports
-import torch
-from torch.autograd import Variable
 import torch.nn as nn
 import torch.nn.functional as func
 import torch.nn.init as torch_init
-import torch.optim as optim
 
 # Data utils and dataloader
-import torchvision
-from torchvision import transforms, utils
-from xray_dataloader import ChestXrayDataset, create_split_loaders
-from xray_imbalanced_dataloader import create_balanced_split_loaders
 
 import matplotlib.pyplot as plt
-import numpy as np
-import os
-
 
 
 class BasicCNN(nn.Module):

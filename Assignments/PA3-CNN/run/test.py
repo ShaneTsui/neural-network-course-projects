@@ -1,12 +1,6 @@
-from intensive_cnn import *
-from baseline_cnn import BasicCNN
-import torch.optim as optim
-import time
-import os
-import pathlib
-from Evaluation import *
-from torch.optim.lr_scheduler import ReduceLROnPlateau
-from visualize import plot_confusion
+from models.intensive_cnn import *
+from run.baseline_cnn import BasicCNN
+from utils.Evaluation import *
 
 
 def main(model_name, model_path):
@@ -51,10 +45,12 @@ def main(model_name, model_path):
 
     if model_name == 'intensive':
         model = IntensiveCNN()
+        model = model.to(computing_device)
+        model.load_state_dict(torch.load(model_path)['model_state_dict'])
     elif model_name == 'baseline':
         model = BasicCNN()
-    model = model.to(computing_device)
-    model.load_state_dict(torch.load(model_path)['model_state_dict'])
+        model = model.to(computing_device)
+        model.load_state_dict(torch.load(model_path))
     model.eval()
 
     labels_all = []
@@ -66,7 +62,7 @@ def main(model_name, model_path):
             images, labels = images.to(computing_device), labels.to(computing_device)
             labels_all.append(labels)
             output = model(images)
-            predictions = output > 0.45
+            predictions = output > 0.5
             predictions_all.append(predictions)
 
     labels = torch.cat(labels_all, 0)
@@ -78,6 +74,6 @@ def main(model_name, model_path):
 
 
 if __name__ == "__main__":
-    model_name = 'intensive'
-    model_path = 'D:\model-online\epoch_1-batch_2999-loss_1.052208423614502-20190218-214334.pt'
+    model_name = 'baseline'
+    model_path = 'D:\model-online/baseline/baseline-model.pt'
     main(model_name, model_path)
