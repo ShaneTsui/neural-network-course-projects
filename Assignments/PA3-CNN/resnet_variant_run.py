@@ -9,7 +9,7 @@ import torch
 from evaluation import Evaluation
 from xray_imbalanced_dataloader import create_balanced_split_loaders
 import random
-from balanced_loss import w_cel_loss
+from loss import w_cel_loss
 
 
 num_epochs = 15           # Number of full passes through the dataset
