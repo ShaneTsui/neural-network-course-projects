@@ -1,4 +1,3 @@
-from run.baseline_cnn import *
 from models.resnet_variant import resnet_n2
 import torch.optim as optim
 import time
