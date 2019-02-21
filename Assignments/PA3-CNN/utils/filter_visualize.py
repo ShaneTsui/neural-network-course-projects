@@ -1,5 +1,5 @@
 from models.intensive_cnn import *
-from run.baseline_cnn import BasicCNN
+from models.baseline_cnn import BasicCNN
 from utils.Evaluation import *
 from PIL import Image
 import math
