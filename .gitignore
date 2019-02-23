@@ -1,10 +1,15 @@
 # Individual
+Assignments/**/.idea/
 Assignments/**/Individual/
 Assignments/**/PA1-Linear-Regression-old/
 ExtraMaterials/
+Assignments/**/data/
 
 # Data
 *.pkl
+*.zip
+*.tar.gz
+**/datasets/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

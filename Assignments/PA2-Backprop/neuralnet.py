@@ -1,17 +1,20 @@
 import numpy as np
 import pickle
 
+from matplotlib import pyplot as plt
+
 config = {}
 config['layer_specs'] = [784, 50, 50, 10]  # The length of list denotes number of hidden layers; each element denotes number of neurons in that layer; first element is the size of input layer, last element is the size of output layer.
-config['activation'] = 'sigmoid' # Takes values 'sigmoid', 'tanh' or 'ReLU'; denotes activation function for hidden layers
+config['activation'] = 'tanh' # Takes values 'sigmoid', 'tanh' or 'ReLU'; denotes activation function for hidden layers
 config['batch_size'] = 1000  # Number of training samples per batch to be passed to network
-config['epochs'] = 200  # Number of epochs to train the model
+config['epochs'] = 300  # Number of epochs to train the model
 config['early_stop'] = True  # Implement early stopping or not
 config['early_stop_epoch'] = 5  # Number of epochs for which validation loss increases to be counted as overfitting
-config['L2_penalty'] = 0.0001  # Regularization constant
+config['L2_penalty'] = 0.000  # Regularization constant
 config['momentum'] = True  # Denotes if momentum is to be applied or not
 config['momentum_gamma'] = 0.9  # Denotes the constant 'gamma' in momentum expression
-config['learning_rate'] = 0.02 # Learning rate of gradient descent algorithm
+config['learning_rate'] = 0.5 # Learning rate of gradient descent algorithm
+# EXP: sigmoid = 0.5, tanh = 0.5; ReLU = 0.15
 
 # Be aware of overflow
 def softmax(x):
@@ -40,7 +43,10 @@ def load_data(fname):
     for idx, label in enumerate(labels):
         labels_one_hot[idx][label] = 1
 
-    return np.array(images), labels_one_hot
+    images = np.array(images)
+    images = (images - np.min(images, axis=1, keepdims=True)) / (np.max(images, axis=1, keepdims=True) - np.min(images, axis=1, keepdims=True))
+
+    return images, labels_one_hot
 
 class Activation:
     def __init__(self, activation_type = "sigmoid"):
@@ -98,8 +104,8 @@ class Activation:
 class Layer():
     def __init__(self, in_units, out_units):
         np.random.seed(42)
-        self.w = np.random.randn(in_units, out_units)  # Weight matrix
-        self.b = np.zeros((1, out_units)).astype(np.float32)  # Bias
+        self.w = np.random.randn(in_units, out_units) / 100 # Weight matrix
+        self.b = np.zeros((1, out_units)).astype(np.float32) # Bias
         self.x = None  # Save the input to forward_pass in this
         self.a = None  # Save the output of forward pass in this (without activation)
 
@@ -109,8 +115,8 @@ class Layer():
         self.delta_w_old = 0
         self.delta_b_old = 0
 
-        self.w_snapshot = None # Weight matrix
-        self.b_snapshot = None # Bias
+        self.w_snapshot = self.w # Weight matrix
+        self.b_snapshot = self.b # Bias
 
     def forward_pass(self, x):
         """
@@ -129,15 +135,15 @@ class Layer():
         N = self.x.shape[0]
 
         self.d_x = delta.dot(self.w.T)
-        self.d_w = self.x.T.dot(delta) / N + l2_penalty * self.w
-        self.d_b = delta.sum(axis=0) / N + l2_penalty * self.b
+        self.d_w = self.x.T.dot(delta) / N - l2_penalty * self.w
+        self.d_b = delta.sum(axis=0) / N
 
         return self.d_x
 
     def update_parameters(self, learning_rate, use_momentum=False, momentum_gamma=None):
         if use_momentum:
-            delta_w = - learning_rate * self.d_w + momentum_gamma * self.delta_w_old
-            delta_b = - learning_rate * self.d_b + momentum_gamma * self.delta_b_old
+            delta_w = learning_rate * self.d_w + momentum_gamma * self.delta_w_old
+            delta_b = learning_rate * self.d_b + momentum_gamma * self.delta_b_old
 
             self.w += delta_w
             self.b += delta_b
@@ -145,8 +151,8 @@ class Layer():
             self.delta_w_old = delta_w
             self.delta_b_old = delta_b
         else:
-            self.w -= learning_rate * self.d_w
-            self.b -= learning_rate * self.d_b
+            self.w += learning_rate * self.d_w
+            self.b += learning_rate * self.d_b
 
     def take_snapshot(self):
         self.w_snapshot = self.w  # Weight matrix
@@ -173,6 +179,7 @@ class Neuralnetwork():
         '''
         find cross entropy loss between logits and targets
         '''
+        # logits = np.clip(logits, epsilon, 1. - epsilon)
         N = targets.shape[0]
         return - np.sum(np.multiply(targets, np.log(logits))) / N
 
@@ -185,7 +192,7 @@ class Neuralnetwork():
         self.x = x
         self.targets = targets
 
-        # Forwand pass
+        # Forward pass
         input = x
         for layer in self.layers:
             input = layer.forward_pass(input)
@@ -199,7 +206,7 @@ class Neuralnetwork():
         if l2_penalty:
             for layer in self.layers:
                 if isinstance(layer, Layer):
-                    loss += (np.sum(layer.w ** 2) + np.sum(layer.b ** 2)) * l2_penalty / 2
+                    loss += (np.sum(layer.w ** 2)) * l2_penalty / 2
         return loss
 
     def backward_pass(self, l2_penalty=0):
@@ -207,7 +214,7 @@ class Neuralnetwork():
         implement the backward pass for the whole network.
         hint - use previously built functions.
         '''
-        delta = self.y - self.targets
+        delta = self.targets - self.y
         for layer in self.layers[::-1]:
             if isinstance(layer, Layer):
                 delta = layer.backward_pass(delta, l2_penalty)
@@ -265,20 +272,35 @@ def trainer(model, X_train, y_train, X_valid, y_valid, config):
     l2_penalty = config['L2_penalty']  # Regularization constant
 
     loss_val_min, no_increase_epoches = float('inf'), 0
+    
+    fig_specs = {}
+    fig_specs['epoches'], fig_specs['train_losses'], fig_specs['train_acces'], fig_specs['val_losses'], fig_specs['val_acces'] = [], [], [], [], []
+    # train_losses, train_acces, val_losses, val_acces = [], [], [], []
 
     for epoch in range(epoches):
+        loss_train_lst, train_acc_list = [], []
         for x, targets in batch_generator(X_train, y_train, batch_size=batch_size):
-            loss_train = model.forward_pass(x, targets=targets, l2_penalty=l2_penalty)
+            loss_train_lst.append(model.forward_pass(x, targets=targets, l2_penalty=l2_penalty)) 
             model.backward_pass(l2_penalty=l2_penalty)
             model.update_parameters(learning_rate=learning_rate, use_momentum=use_momentum, momentum_gamma=momentum_gamma)
+            train_acc_list.append(model.predict(x, targets=targets)) 
 
         # Check accuracy
+        loss_train = np.mean(np.array(loss_train_lst))
         loss_val = model.forward_pass(X_valid, targets=y_valid)
-        train_acc = model.predict(x, targets=targets)
+        train_acc = np.mean(np.array(train_acc_list))
         loss_acc = model.predict(X_valid, targets=y_valid)
 
         print("Epoch {}, Train loss = {}, Train acc = {}, Val Loss = {}, Val acc = {}".format(epoch +1, loss_train, train_acc, loss_val,
                                                                                     loss_acc))
+        
+        
+        fig_specs['epoches'].append(epoch+1)
+        fig_specs['train_losses'].append(loss_train)
+        fig_specs['train_acces'].append(train_acc)
+        fig_specs['val_losses'].append(loss_val) 
+        fig_specs['val_acces'].append(loss_acc)
+
         # Check validation loss
         if loss_val < loss_val_min:
             model.take_snapshot()
@@ -291,13 +313,34 @@ def trainer(model, X_train, y_train, X_valid, y_valid, config):
             if no_increase_epoches > early_stop_epoch:
                 break
 
-    return model
+    return model, fig_specs
 
 def test(model, X_test, y_test, config):
     """
     Write code to run the model on the data passed as input and return accuracy.
     """
     return model.predict(X_test, y_test)
+
+def fig(fig_specs, q):
+    plt.figure(1)
+    plt.plot(fig_specs['epoches'], fig_specs['train_losses'], label='train')
+    plt.plot(fig_specs['epoches'], fig_specs['val_losses'], label='validation')
+    plt.xlabel('epoches')
+    plt.ylabel('loss')
+    plt.legend()
+    #plt.show()
+    plt.savefig(q+'loss.png', bbox_inches='tight')
+    plt.close()
+
+    plt.figure(2)
+    plt.plot(fig_specs['epoches'], fig_specs['train_acces'], label='train')
+    plt.plot(fig_specs['epoches'], fig_specs['val_acces'], label='validation')
+    plt.xlabel('epoches')
+    plt.ylabel('accuracy')
+    plt.legend()
+    #plt.show()
+    plt.savefig(q+'accuracy.png', bbox_inches='tight')
+    plt.close()
 
 
 if __name__ == "__main__":
@@ -310,8 +353,10 @@ if __name__ == "__main__":
     X_train, y_train = load_data(train_data_fname)
     X_valid, y_valid = load_data(valid_data_fname)
     X_test, y_test = load_data(test_data_fname)
-    trainer(model, X_train, y_train, X_valid, y_valid, config)
+    m, fig_specs = trainer(model, X_train, y_train, X_valid, y_valid, config)
     model.load_snapshot()
     test_acc = test(model, X_test, y_test, config)
     print(test_acc)
+
+    fig(fig_specs, 'f1')
 

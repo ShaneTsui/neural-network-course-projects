@@ -1,9 +1,0 @@
-logistic accuracy for n_components=10, learning_rates=0.1, n_epoches=10 is 0.645
-logistic accuracy for n_components=10, learning_rates=0.4, n_epoches=10 is 0.9349999999999999
-logistic accuracy for n_components=10, learning_rates=0.8, n_epoches=10 is 0.5
-logistic accuracy for n_components=20, learning_rates=0.1, n_epoches=10 is 0.615
-logistic accuracy for n_components=20, learning_rates=0.4, n_epoches=10 is 0.9349999999999999
-logistic accuracy for n_components=20, learning_rates=0.8, n_epoches=10 is 0.52
-logistic accuracy for n_components=40, learning_rates=0.1, n_epoches=10 is 0.62
-logistic accuracy for n_components=40, learning_rates=0.4, n_epoches=10 is 0.8300000000000001
-logistic accuracy for n_components=40, learning_rates=0.8, n_epoches=10 is 0.55
