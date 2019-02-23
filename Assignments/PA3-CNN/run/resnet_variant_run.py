@@ -1,15 +1,10 @@
-from resnet_variant import *
-from baseline_cnn import *
-from resnet_variant import resnet_n2
-import torch.nn as nn
+from models.resnet_variant import resnet_n2
 import torch.optim as optim
 import time
 import pathlib
 import torch
-from evaluation import Evaluation
-from xray_imbalanced_dataloader import create_balanced_split_loaders
-import random
-from loss import w_cel_loss
+from data.xray_imbalanced_dataloader import create_balanced_split_loaders
+from utils.loss import w_cel_loss
 
 
 num_epochs = 15           # Number of full passes through the dataset

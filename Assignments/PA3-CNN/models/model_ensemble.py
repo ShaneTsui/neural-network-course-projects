@@ -1,13 +1,7 @@
-from intensive_cnn import *
+from models.intensive_cnn import *
 from baseline_cnn import BasicCNN
-import torch.optim as optim
-import time
-import os
-import pathlib
-from Evaluation import *
-from resnet_variant import resnet_n2
-from torch.optim.lr_scheduler import ReduceLROnPlateau
-from visualize import plot_confusion
+from utils.Evaluation import *
+from models.resnet_variant import resnet_n2
 
 
 def main(model_list):
@@ -17,7 +11,7 @@ def main(model_list):
 
     # Setup: initialize the hyperparameters/variables
     num_epochs = 5           # Number of full passes through the dataset
-    batch_size = 16           # Number of samples in each minibatch
+    batch_size = 128           # Number of samples in each minibatch
     learning_rate = 1e-5
     seed = np.random.seed(1) # Seed the random number generator for reproducibility
     p_val = 0.1              # Percent of the overall dataset to reserve for validation
@@ -75,11 +69,14 @@ def main(model_list):
 
             predictions = torch.zeros_like(labels).to(computing_device)
             for model_name in model_names:
-                if model_name != 'intensive':
-                    images = images.repeat(1, 3, 1, 1)
-                output = models[model_name](images)
+                if model_name == 'resnet':
+                    output = models[model_name](images.repeat(1, 3, 1, 1))
+                else:
+                    output = models[model_name](images)
                 predictions += output
-            predictions_all.append((predictions / num_models) > 0.5)
+            pred = (predictions / num_models) > 0.5
+            print(pred)
+            predictions_all.append(pred)
 
     labels = torch.cat(labels_all, 0)
     predctions = torch.cat(predictions_all, 0)
@@ -92,10 +89,10 @@ def main(model_list):
 
 
 if __name__ == "__main__":
-
-    intensive_model_path = 'D:\model-online\epoch_1-batch_0-loss_1.0067505836486816-20190219-013323.pt'
-    intensive_model_path2 = 'D:\model-online/resnet\epoch_1-batch_0-loss_1.0875942707061768-20190218-185232.pt'
-    models = [('intensive', intensive_model_path), ('resnet', intensive_model_path2)]
+    baseline_path = 'D:\model-online/baseline/baseline-model.pt'
+    intensive_model_path = 'D:\model-online\epoch_4-batch_0-loss_1.0026615858078003-20190219-074201.pt'
+    resnet_model_path = 'D:\model-online/resnet\epoch_1-batch_0-loss_1.0875942707061768-20190218-185232.pt'
+    models = [('intensive', intensive_model_path), ('resnet', resnet_model_path), ('baseline', baseline_path)]
     main(models)
 
     # img = torch.FloatTensor([[[[1,1,1],[2,2,2],[3,3,3]]], [[[1,1,1],[2,2,2],[3,3,3]]]])

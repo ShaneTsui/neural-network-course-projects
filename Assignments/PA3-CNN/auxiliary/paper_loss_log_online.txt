@@ -1,0 +1,829 @@
+mini batch 0, val loss 1.382293939590454
+Model saved to epoch_0-batch_0-loss_1.382293939590454-20190218-135139.pt
+Epoch 1, average minibatch 50 loss: 1.408
+mini batch 100, val loss 1.3383420705795288
+Model saved to epoch_0-batch_100-loss_1.3383420705795288-20190218-135455.pt
+Epoch 1, average minibatch 100 loss: 1.391
+Epoch 1, average minibatch 150 loss: 1.357
+mini batch 200, val loss 1.331823468208313
+Model saved to epoch_0-batch_200-loss_1.331823468208313-20190218-135816.pt
+Epoch 1, average minibatch 200 loss: 1.369
+Epoch 1, average minibatch 250 loss: 1.350
+mini batch 300, val loss 1.3080072402954102
+Model saved to epoch_0-batch_300-loss_1.3080072402954102-20190218-140131.pt
+Epoch 1, average minibatch 300 loss: 1.351
+Epoch 1, average minibatch 350 loss: 1.348
+mini batch 400, val loss 1.3084301948547363
+Epoch 1, average minibatch 400 loss: 1.346
+Epoch 1, average minibatch 450 loss: 1.331
+mini batch 500, val loss 1.3006463050842285
+Model saved to epoch_0-batch_500-loss_1.3006463050842285-20190218-140802.pt
+Epoch 1, average minibatch 500 loss: 1.326
+Epoch 1, average minibatch 550 loss: 1.328
+mini batch 600, val loss 1.2924864292144775
+Model saved to epoch_0-batch_600-loss_1.2924864292144775-20190218-141125.pt
+Epoch 1, average minibatch 600 loss: 1.329
+Epoch 1, average minibatch 650 loss: 1.321
+mini batch 700, val loss 1.2851628065109253
+Model saved to epoch_0-batch_700-loss_1.2851628065109253-20190218-141444.pt
+Epoch 1, average minibatch 700 loss: 1.302
+Epoch 1, average minibatch 750 loss: 1.303
+mini batch 800, val loss 1.2841553688049316
+Model saved to epoch_0-batch_800-loss_1.2841553688049316-20190218-141802.pt
+Epoch 1, average minibatch 800 loss: 1.320
+Epoch 1, average minibatch 850 loss: 1.315
+mini batch 900, val loss 1.2817351818084717
+Model saved to epoch_0-batch_900-loss_1.2817351818084717-20190218-142123.pt
+Epoch 1, average minibatch 900 loss: 1.313
+Epoch 1, average minibatch 950 loss: 1.304
+mini batch 1000, val loss 1.266228437423706
+Model saved to epoch_0-batch_1000-loss_1.266228437423706-20190218-142448.pt
+Epoch 1, average minibatch 1000 loss: 1.305
+Epoch 1, average minibatch 1050 loss: 1.305
+mini batch 1100, val loss 1.2624355554580688
+Model saved to epoch_0-batch_1100-loss_1.2624355554580688-20190218-142804.pt
+Epoch 1, average minibatch 1100 loss: 1.302
+Epoch 1, average minibatch 1150 loss: 1.293
+mini batch 1200, val loss 1.2640185356140137
+Epoch 1, average minibatch 1200 loss: 1.295
+Epoch 1, average minibatch 1250 loss: 1.283
+mini batch 1300, val loss 1.2600593566894531
+Model saved to epoch_0-batch_1300-loss_1.2600593566894531-20190218-143440.pt
+Epoch 1, average minibatch 1300 loss: 1.276
+Epoch 1, average minibatch 1350 loss: 1.290
+mini batch 1400, val loss 1.257274866104126
+Model saved to epoch_0-batch_1400-loss_1.257274866104126-20190218-143800.pt
+Epoch 1, average minibatch 1400 loss: 1.294
+Epoch 1, average minibatch 1450 loss: 1.283
+mini batch 1500, val loss 1.250977635383606
+Model saved to epoch_0-batch_1500-loss_1.250977635383606-20190218-144114.pt
+Epoch 1, average minibatch 1500 loss: 1.286
+Epoch 1, average minibatch 1550 loss: 1.287
+mini batch 1600, val loss 1.2469711303710938
+Model saved to epoch_0-batch_1600-loss_1.2469711303710938-20190218-144425.pt
+Epoch 1, average minibatch 1600 loss: 1.285
+Epoch 1, average minibatch 1650 loss: 1.291
+mini batch 1700, val loss 1.2546110153198242
+Epoch 1, average minibatch 1700 loss: 1.286
+Epoch 1, average minibatch 1750 loss: 1.283
+mini batch 1800, val loss 1.2437655925750732
+Model saved to epoch_0-batch_1800-loss_1.2437655925750732-20190218-145043.pt
+Epoch 1, average minibatch 1800 loss: 1.269
+Epoch 1, average minibatch 1850 loss: 1.269
+mini batch 1900, val loss 1.2417963743209839
+Model saved to epoch_0-batch_1900-loss_1.2417963743209839-20190218-145352.pt
+Epoch 1, average minibatch 1900 loss: 1.273
+Epoch 1, average minibatch 1950 loss: 1.278
+mini batch 0, val loss 1.2312037944793701
+Model saved to epoch_0-batch_0-loss_1.2312037944793701-20190218-155050.pt
+Epoch 1, average minibatch 50 loss: 1.272
+mini batch 100, val loss 1.225056529045105
+Model saved to epoch_0-batch_100-loss_1.225056529045105-20190218-155505.pt
+Epoch 1, average minibatch 100 loss: 1.276
+Epoch 1, average minibatch 150 loss: 1.266
+mini batch 200, val loss 1.2215120792388916
+Model saved to epoch_0-batch_200-loss_1.2215120792388916-20190218-155914.pt
+Epoch 1, average minibatch 200 loss: 1.277
+Epoch 1, average minibatch 250 loss: 1.276
+mini batch 300, val loss 1.218418836593628
+Model saved to epoch_0-batch_300-loss_1.218418836593628-20190218-160331.pt
+Epoch 1, average minibatch 300 loss: 1.265
+Epoch 1, average minibatch 350 loss: 1.262
+mini batch 400, val loss 1.2219595909118652
+Epoch 1, average minibatch 400 loss: 1.265
+Epoch 1, average minibatch 450 loss: 1.265
+mini batch 500, val loss 1.2181659936904907
+Model saved to epoch_0-batch_500-loss_1.2181659936904907-20190218-161204.pt
+Epoch 1, average minibatch 500 loss: 1.273
+Epoch 1, average minibatch 550 loss: 1.256
+mini batch 600, val loss 1.2157018184661865
+Model saved to epoch_0-batch_600-loss_1.2157018184661865-20190218-161619.pt
+Epoch 1, average minibatch 600 loss: 1.262
+Epoch 1, average minibatch 650 loss: 1.270
+mini batch 700, val loss 1.217758059501648
+Epoch 1, average minibatch 700 loss: 1.257
+Epoch 1, average minibatch 750 loss: 1.263
+mini batch 800, val loss 1.2117446660995483
+Model saved to epoch_0-batch_800-loss_1.2117446660995483-20190218-162437.pt
+Epoch 1, average minibatch 800 loss: 1.256
+Epoch 1, average minibatch 850 loss: 1.247
+Epoch 1, average minibatch 900 loss: 1.245
+Epoch 1, average minibatch 950 loss: 1.243
+mini batch 0, val loss 1.2132396697998047
+Model saved to epoch_0-batch_0-loss_1.2132396697998047-20190218-163806.pt
+Epoch 1, average minibatch 50 loss: 1.251
+Epoch 1, average minibatch 100 loss: 1.247
+Epoch 1, average minibatch 150 loss: 1.254
+Epoch 1, average minibatch 200 loss: 1.250
+Epoch 1, average minibatch 250 loss: 1.228
+Epoch 1, average minibatch 300 loss: 1.244
+Epoch 1, average minibatch 350 loss: 1.243
+Epoch 1, average minibatch 400 loss: 1.246
+Epoch 1, average minibatch 450 loss: 1.235
+mini batch 500, val loss 1.2016953229904175
+Model saved to epoch_0-batch_500-loss_1.2016953229904175-20190218-164628.pt
+Epoch 1, average minibatch 500 loss: 1.238
+Epoch 1, average minibatch 550 loss: 1.253
+Epoch 1, average minibatch 600 loss: 1.239
+Epoch 1, average minibatch 650 loss: 1.248
+Epoch 1, average minibatch 700 loss: 1.241
+Epoch 1, average minibatch 750 loss: 1.231
+Epoch 1, average minibatch 800 loss: 1.241
+Epoch 1, average minibatch 850 loss: 1.229
+Epoch 1, average minibatch 900 loss: 1.234
+Epoch 1, average minibatch 950 loss: 1.222
+mini batch 1000, val loss 1.1986312866210938
+Model saved to epoch_0-batch_1000-loss_1.1986312866210938-20190218-165442.pt
+Epoch 1, average minibatch 1000 loss: 1.232
+Epoch 1, average minibatch 1050 loss: 1.227
+Epoch 1, average minibatch 1100 loss: 1.222
+Epoch 1, average minibatch 1150 loss: 1.232
+Epoch 1, average minibatch 1200 loss: 1.237
+Epoch 1, average minibatch 1250 loss: 1.230
+Epoch 1, average minibatch 1300 loss: 1.228
+Epoch 1, average minibatch 1350 loss: 1.229
+Epoch 1, average minibatch 1400 loss: 1.213
+Epoch 1, average minibatch 1450 loss: 1.214
+mini batch 1500, val loss 1.1880606412887573
+Model saved to epoch_0-batch_1500-loss_1.1880606412887573-20190218-170305.pt
+Epoch 1, average minibatch 1500 loss: 1.208
+Epoch 1, average minibatch 1550 loss: 1.234
+Epoch 1, average minibatch 1600 loss: 1.219
+Epoch 1, average minibatch 1650 loss: 1.211
+Epoch 1, average minibatch 1700 loss: 1.224
+Epoch 1, average minibatch 1750 loss: 1.213
+Epoch 1, average minibatch 1800 loss: 1.204
+Epoch 1, average minibatch 1850 loss: 1.229
+Epoch 1, average minibatch 1900 loss: 1.219
+Epoch 1, average minibatch 1950 loss: 1.217
+mini batch 2000, val loss 1.1780918836593628
+Model saved to epoch_0-batch_2000-loss_1.1780918836593628-20190218-171125.pt
+Epoch 1, average minibatch 2000 loss: 1.204
+Epoch 1, average minibatch 2050 loss: 1.220
+Epoch 1, average minibatch 2100 loss: 1.216
+Epoch 1, average minibatch 2150 loss: 1.212
+Epoch 1, average minibatch 2200 loss: 1.208
+Epoch 1, average minibatch 2250 loss: 1.214
+Epoch 1, average minibatch 2300 loss: 1.180
+Epoch 1, average minibatch 2350 loss: 1.204
+Epoch 1, average minibatch 2400 loss: 1.203
+Epoch 1, average minibatch 2450 loss: 1.210
+mini batch 2500, val loss 1.1731284856796265
+Model saved to epoch_0-batch_2500-loss_1.1731284856796265-20190218-171926.pt
+Epoch 1, average minibatch 2500 loss: 1.201
+Epoch 1, average minibatch 2550 loss: 1.208
+Epoch 1, average minibatch 2600 loss: 1.188
+Epoch 1, average minibatch 2650 loss: 1.206
+Epoch 1, average minibatch 2700 loss: 1.187
+Epoch 1, average minibatch 2750 loss: 1.201
+Epoch 1, average minibatch 2800 loss: 1.195
+Epoch 1, average minibatch 2850 loss: 1.196
+Epoch 1, average minibatch 2900 loss: 1.191
+Epoch 1, average minibatch 2950 loss: 1.207
+mini batch 3000, val loss 1.173532485961914
+Epoch 1, average minibatch 3000 loss: 1.198
+Epoch 1, average minibatch 3050 loss: 1.196
+Epoch 1, average minibatch 3100 loss: 1.193
+Epoch 1, average minibatch 3150 loss: 1.197
+Epoch 1, average minibatch 3200 loss: 1.203
+Epoch 1, average minibatch 3250 loss: 1.186
+Epoch 1, average minibatch 3300 loss: 1.194
+Epoch 1, average minibatch 3350 loss: 1.191
+Epoch 1, average minibatch 3400 loss: 1.181
+Epoch 1, average minibatch 3450 loss: 1.198
+
+mini batch 0, val loss 1.1503926515579224
+
+Epoch 1, average minibatch 50 loss: 1.189
+Epoch 1, average minibatch 100 loss: 1.192
+Epoch 1, average minibatch 150 loss: 1.184
+Epoch 1, average minibatch 200 loss: 1.193
+Epoch 1, average minibatch 250 loss: 1.198
+Epoch 1, average minibatch 300 loss: 1.181
+Epoch 1, average minibatch 350 loss: 1.207
+Epoch 1, average minibatch 400 loss: 1.201
+Epoch 1, average minibatch 450 loss: 1.206
+Epoch 1, average minibatch 500 loss: 1.180
+Epoch 1, average minibatch 550 loss: 1.174
+mini batch 600, val loss 1.1529955863952637
+Epoch 1, average minibatch 600 loss: 1.187
+Epoch 1, average minibatch 650 loss: 1.174
+Epoch 1, average minibatch 700 loss: 1.176
+Epoch 1, average minibatch 750 loss: 1.182
+Epoch 1, average minibatch 800 loss: 1.203
+Epoch 1, average minibatch 850 loss: 1.181
+Epoch 1, average minibatch 900 loss: 1.182
+Epoch 1, average minibatch 950 loss: 1.191
+Epoch 1, average minibatch 1000 loss: 1.185
+Epoch 1, average minibatch 1050 loss: 1.182
+Epoch 1, average minibatch 1100 loss: 1.168
+Epoch 1, average minibatch 1150 loss: 1.167
+mini batch 1200, val loss 1.138030767440796
+Model saved to epoch_0-batch_1200-loss_1.138030767440796-20190218-180512.pt
+Epoch 1, average minibatch 1200 loss: 1.169
+Epoch 1, average minibatch 1250 loss: 1.181
+Epoch 1, average minibatch 1300 loss: 1.164
+Epoch 1, average minibatch 1350 loss: 1.159
+Epoch 1, average minibatch 1400 loss: 1.174
+Epoch 1, average minibatch 1450 loss: 1.184
+Epoch 1, average minibatch 1500 loss: 1.161
+Epoch 1, average minibatch 1550 loss: 1.173
+Epoch 1, average minibatch 1600 loss: 1.172
+Epoch 1, average minibatch 1650 loss: 1.148
+Epoch 1, average minibatch 1700 loss: 1.160
+Epoch 1, average minibatch 1750 loss: 1.171
+mini batch 1800, val loss 1.1427022218704224
+Epoch 1, average minibatch 1800 loss: 1.164
+Epoch 1, average minibatch 1850 loss: 1.160
+Epoch 1, average minibatch 1900 loss: 1.156
+Epoch 1, average minibatch 1950 loss: 1.155
+Epoch 1, average minibatch 2000 loss: 1.149
+Epoch 1, average minibatch 2050 loss: 1.153
+Epoch 1, average minibatch 2100 loss: 1.166
+Epoch 1, average minibatch 2150 loss: 1.151
+Epoch 1, average minibatch 2200 loss: 1.154
+Epoch 1, average minibatch 2250 loss: 1.144
+Epoch 1, average minibatch 2300 loss: 1.153
+Epoch 1, average minibatch 2350 loss: 1.145
+mini batch 2400, val loss 1.1306883096694946
+Model saved to epoch_0-batch_2400-loss_1.1306883096694946-20190218-182410.pt
+Epoch 1, average minibatch 2400 loss: 1.168
+Epoch 1, average minibatch 2450 loss: 1.152
+Epoch 1, average minibatch 2500 loss: 1.137
+Epoch 1, average minibatch 2550 loss: 1.143
+Epoch 1, average minibatch 2600 loss: 1.129
+Epoch 1, average minibatch 2650 loss: 1.150
+Epoch 1, average minibatch 2700 loss: 1.144
+Epoch 1, average minibatch 2750 loss: 1.168
+Epoch 1, average minibatch 2800 loss: 1.151
+Epoch 1, average minibatch 2850 loss: 1.143
+Epoch 1, average minibatch 2900 loss: 1.157
+Epoch 1, average minibatch 2950 loss: 1.132
+mini batch 3000, val loss 1.1250427961349487
+Model saved to epoch_0-batch_3000-loss_1.1250427961349487-20190218-183344.pt
+Epoch 1, average minibatch 3000 loss: 1.152
+Epoch 1, average minibatch 3050 loss: 1.150
+Epoch 1, average minibatch 3100 loss: 1.127
+Epoch 1, average minibatch 3150 loss: 1.130
+Epoch 1, average minibatch 3200 loss: 1.153
+Epoch 1, average minibatch 3250 loss: 1.131
+Epoch 1, average minibatch 3300 loss: 1.126
+Epoch 1, average minibatch 3350 loss: 1.134
+Epoch 1, average minibatch 3400 loss: 1.125
+Epoch 1, average minibatch 3450 loss: 1.144
+Epoch 1, average minibatch 3500 loss: 1.125
+Epoch 1, average minibatch 3550 loss: 1.145
+mini batch 3600, val loss 1.1263461112976074
+Epoch 1, average minibatch 3600 loss: 1.130
+Epoch 1, average minibatch 3650 loss: 1.118
+Epoch 1, average minibatch 3700 loss: 1.120
+Epoch 1, average minibatch 3750 loss: 1.122
+Epoch 1, average minibatch 3800 loss: 1.120
+Epoch 1, average minibatch 3850 loss: 1.134
+Epoch 1, average minibatch 3900 loss: 1.127
+Epoch 1, average minibatch 3950 loss: 1.148
+Epoch 1, average minibatch 4000 loss: 1.145
+Epoch 1, average minibatch 4050 loss: 1.139
+Epoch 1, average minibatch 4100 loss: 1.122
+Epoch 1, average minibatch 4150 loss: 1.135
+mini batch 4200, val loss 1.113816261291504
+Model saved to epoch_0-batch_4200-loss_1.113816261291504-20190218-185247.pt
+Epoch 1, average minibatch 4200 loss: 1.108
+Epoch 1, average minibatch 4250 loss: 1.126
+
+Epoch 1, average minibatch 50 loss: 1.134
+Epoch 1, average minibatch 100 loss: 1.127
+Epoch 1, average minibatch 150 loss: 1.133
+Epoch 1, average minibatch 200 loss: 1.150
+Epoch 1, average minibatch 250 loss: 1.129
+Epoch 1, average minibatch 300 loss: 1.149
+Epoch 1, average minibatch 350 loss: 1.150
+Epoch 1, average minibatch 400 loss: 1.124
+Epoch 1, average minibatch 450 loss: 1.141
+Epoch 1, average minibatch 500 loss: 1.118
+Epoch 1, average minibatch 550 loss: 1.120
+Epoch 1, average minibatch 600 loss: 1.134
+Epoch 1, average minibatch 650 loss: 1.120
+Epoch 1, average minibatch 700 loss: 1.133
+Epoch 1, average minibatch 750 loss: 1.121
+Epoch 1, average minibatch 800 loss: 1.121
+Epoch 1, average minibatch 850 loss: 1.108
+Epoch 1, average minibatch 900 loss: 1.122
+Epoch 1, average minibatch 950 loss: 1.122
+mini batch 999, val loss 1.092704176902771
+Model saved to epoch_0-batch_999-loss_1.092704176902771-20190218-191830.pt
+Epoch 1, average minibatch 1000 loss: 1.124
+Epoch 1, average minibatch 1050 loss: 1.105
+Epoch 1, average minibatch 1100 loss: 1.121
+Epoch 1, average minibatch 1150 loss: 1.122
+Epoch 1, average minibatch 1200 loss: 1.112
+Epoch 1, average minibatch 1250 loss: 1.116
+Epoch 1, average minibatch 1300 loss: 1.100
+Epoch 1, average minibatch 1350 loss: 1.111
+Epoch 1, average minibatch 1400 loss: 1.106
+Epoch 1, average minibatch 1450 loss: 1.119
+Epoch 1, average minibatch 1500 loss: 1.128
+Epoch 1, average minibatch 1550 loss: 1.117
+Epoch 1, average minibatch 1600 loss: 1.113
+Epoch 1, average minibatch 1650 loss: 1.107
+Epoch 1, average minibatch 1700 loss: 1.101
+Epoch 1, average minibatch 1750 loss: 1.099
+Epoch 1, average minibatch 1800 loss: 1.111
+Epoch 1, average minibatch 1850 loss: 1.110
+Epoch 1, average minibatch 1900 loss: 1.100
+Epoch 1, average minibatch 1950 loss: 1.119
+mini batch 1999, val loss 1.0923500061035156
+Model saved to epoch_0-batch_1999-loss_1.0923500061035156-20190218-193202.pt
+Epoch 1, average minibatch 2000 loss: 1.101
+Epoch 1, average minibatch 2050 loss: 1.104
+Epoch 1, average minibatch 2100 loss: 1.102
+Epoch 1, average minibatch 2150 loss: 1.095
+Epoch 1, average minibatch 2200 loss: 1.098
+Epoch 1, average minibatch 2250 loss: 1.105
+Epoch 1, average minibatch 2300 loss: 1.098
+Epoch 1, average minibatch 2350 loss: 1.089
+Epoch 1, average minibatch 2400 loss: 1.085
+Epoch 1, average minibatch 2450 loss: 1.100
+Epoch 1, average minibatch 2500 loss: 1.094
+Epoch 1, average minibatch 2550 loss: 1.093
+Epoch 1, average minibatch 2600 loss: 1.093
+Epoch 1, average minibatch 2650 loss: 1.092
+Epoch 1, average minibatch 2700 loss: 1.104
+Epoch 1, average minibatch 2750 loss: 1.061
+Epoch 1, average minibatch 2800 loss: 1.078
+Epoch 1, average minibatch 2850 loss: 1.106
+Epoch 1, average minibatch 2900 loss: 1.097
+Epoch 1, average minibatch 2950 loss: 1.111
+mini batch 2999, val loss 1.0805387496948242
+Model saved to epoch_0-batch_2999-loss_1.0805387496948242-20190218-194552.pt
+Epoch 1, average minibatch 3000 loss: 1.093
+Epoch 1, average minibatch 3050 loss: 1.087
+Epoch 1, average minibatch 3100 loss: 1.088
+Epoch 1, average minibatch 3150 loss: 1.100
+Epoch 1, average minibatch 3200 loss: 1.080
+Epoch 1, average minibatch 3250 loss: 1.091
+Epoch 1, average minibatch 3300 loss: 1.060
+Epoch 1, average minibatch 3350 loss: 1.090
+Epoch 1, average minibatch 3400 loss: 1.091
+Epoch 1, average minibatch 3450 loss: 1.084
+
+
+Epoch 1, average minibatch 100 loss: 1.103
+Epoch 1, average minibatch 150 loss: 1.096
+Epoch 1, average minibatch 200 loss: 1.088
+Epoch 1, average minibatch 250 loss: 1.087
+Epoch 1, average minibatch 300 loss: 1.103
+Epoch 1, average minibatch 350 loss: 1.107
+Epoch 1, average minibatch 400 loss: 1.095
+Epoch 1, average minibatch 450 loss: 1.105
+Epoch 1, average minibatch 500 loss: 1.095
+Epoch 1, average minibatch 550 loss: 1.082
+Epoch 1, average minibatch 600 loss: 1.099
+Epoch 1, average minibatch 650 loss: 1.081
+Epoch 1, average minibatch 700 loss: 1.068
+Epoch 1, average minibatch 750 loss: 1.090
+Epoch 1, average minibatch 800 loss: 1.095
+Epoch 1, average minibatch 850 loss: 1.075
+Epoch 1, average minibatch 900 loss: 1.087
+Epoch 1, average minibatch 950 loss: 1.073
+Epoch 1, average minibatch 1000 loss: 1.095
+Epoch 1, average minibatch 1050 loss: 1.086
+Epoch 1, average minibatch 1100 loss: 1.078
+Epoch 1, average minibatch 1150 loss: 1.082
+Epoch 1, average minibatch 1200 loss: 1.077
+Epoch 1, average minibatch 1250 loss: 1.088
+Epoch 1, average minibatch 1300 loss: 1.073
+Epoch 1, average minibatch 1350 loss: 1.083
+Epoch 1, average minibatch 1400 loss: 1.063
+Epoch 1, average minibatch 1450 loss: 1.064
+mini batch 1499, val loss 1.0719480514526367
+Model saved to epoch_0-batch_1499-loss_1.0719480514526367-20190218-202145.pt
+Epoch 1, average minibatch 1500 loss: 1.071
+Epoch 1, average minibatch 1550 loss: 1.077
+Epoch 1, average minibatch 1600 loss: 1.056
+Epoch 1, average minibatch 1650 loss: 1.078
+Epoch 1, average minibatch 1700 loss: 1.074
+Epoch 1, average minibatch 1750 loss: 1.078
+Epoch 1, average minibatch 1800 loss: 1.069
+Epoch 1, average minibatch 1850 loss: 1.072
+Epoch 1, average minibatch 1900 loss: 1.053
+Epoch 1, average minibatch 1950 loss: 1.062
+Epoch 1, average minibatch 2000 loss: 1.064
+Epoch 1, average minibatch 2050 loss: 1.064
+Epoch 1, average minibatch 2100 loss: 1.075
+Epoch 1, average minibatch 2150 loss: 1.062
+Epoch 1, average minibatch 2200 loss: 1.088
+Epoch 1, average minibatch 2250 loss: 1.067
+Epoch 1, average minibatch 2300 loss: 1.060
+Epoch 1, average minibatch 2350 loss: 1.084
+Epoch 1, average minibatch 2400 loss: 1.077
+Epoch 1, average minibatch 2450 loss: 1.077
+Epoch 1, average minibatch 2500 loss: 1.076
+Epoch 1, average minibatch 2550 loss: 1.052
+Epoch 1, average minibatch 2600 loss: 1.035
+Epoch 1, average minibatch 2650 loss: 1.032
+Epoch 1, average minibatch 2700 loss: 1.037
+Epoch 1, average minibatch 2750 loss: 1.043
+Epoch 1, average minibatch 2800 loss: 1.047
+Epoch 1, average minibatch 2850 loss: 1.049
+Epoch 1, average minibatch 2900 loss: 1.071
+Epoch 1, average minibatch 2950 loss: 1.049
+mini batch 2999, val loss 1.0631515979766846
+Model saved to epoch_0-batch_2999-loss_1.0631515979766846-20190218-204050.pt
+Epoch 1, average minibatch 3000 loss: 1.067
+Epoch 1, average minibatch 3050 loss: 1.051
+Epoch 1, average minibatch 3100 loss: 1.042
+Epoch 1, average minibatch 3150 loss: 1.034
+Epoch 1, average minibatch 3200 loss: 1.049
+Epoch 1, average minibatch 3250 loss: 1.065
+Epoch 1, average minibatch 3300 loss: 1.050
+Epoch 1, average minibatch 3350 loss: 1.063
+Epoch 1, average minibatch 3400 loss: 1.083
+Epoch 1, average minibatch 3450 loss: 1.049
+Epoch 1, average minibatch 3500 loss: 1.052
+Epoch 1, average minibatch 3550 loss: 1.053
+Epoch 1, average minibatch 3600 loss: 1.055
+Epoch 1, average minibatch 3650 loss: 1.053
+Epoch 1, average minibatch 3700 loss: 1.051
+Epoch 1, average minibatch 3750 loss: 1.032
+Epoch 1, average minibatch 3800 loss: 1.047
+Epoch 1, average minibatch 3850 loss: 1.050
+Epoch 1, average minibatch 3900 loss: 1.043
+Epoch 1, average minibatch 3950 loss: 1.031
+Epoch 1, average minibatch 4000 loss: 1.056
+Epoch 1, average minibatch 4050 loss: 1.039
+Epoch 1, average minibatch 4100 loss: 1.028
+Epoch 1, average minibatch 4150 loss: 1.040
+Epoch 1, average minibatch 4200 loss: 1.026
+Epoch 1, average minibatch 4250 loss: 1.053
+Epoch 1, average minibatch 4300 loss: 1.041
+Epoch 1, average minibatch 4350 loss: 1.046
+Epoch 1, average minibatch 4400 loss: 1.052
+Epoch 1, average minibatch 4450 loss: 1.038
+mini batch 4499, val loss 1.0604304075241089
+Model saved to epoch_0-batch_4499-loss_1.0604304075241089-20190218-205950.pt
+Epoch 1, average minibatch 4500 loss: 1.024
+Epoch 1, average minibatch 4550 loss: 1.050
+Epoch 1, average minibatch 4600 loss: 1.019
+Epoch 1, average minibatch 4650 loss: 1.038
+Epoch 1, average minibatch 4700 loss: 1.023
+Epoch 1, average minibatch 4750 loss: 1.035
+Epoch 1, average minibatch 4800 loss: 1.049
+Epoch 1, average minibatch 4850 loss: 1.030
+Epoch 1, average minibatch 4900 loss: 1.032
+Epoch 1, average minibatch 4950 loss: 1.017
+Epoch 1, average minibatch 5000 loss: 1.026
+Finished 1 epochs of training
+Epoch 2, average minibatch 50 loss: 1.034
+Epoch 2, average minibatch 100 loss: 1.044
+Epoch 2, average minibatch 150 loss: 1.028
+Epoch 2, average minibatch 200 loss: 1.017
+Epoch 2, average minibatch 250 loss: 1.037
+Epoch 2, average minibatch 300 loss: 1.036
+Epoch 2, average minibatch 350 loss: 1.045
+Epoch 2, average minibatch 400 loss: 1.008
+Epoch 2, average minibatch 450 loss: 1.023
+Epoch 2, average minibatch 500 loss: 1.011
+Epoch 2, average minibatch 550 loss: 1.023
+Epoch 2, average minibatch 600 loss: 1.010
+Epoch 2, average minibatch 650 loss: 1.026
+Epoch 2, average minibatch 700 loss: 1.023
+Epoch 2, average minibatch 750 loss: 1.022
+Epoch 2, average minibatch 800 loss: 1.008
+Epoch 2, average minibatch 850 loss: 1.028
+Epoch 2, average minibatch 900 loss: 1.018
+Epoch 2, average minibatch 950 loss: 1.040
+Epoch 2, average minibatch 1000 loss: 1.023
+Epoch 2, average minibatch 1050 loss: 1.012
+Epoch 2, average minibatch 1100 loss: 1.020
+Epoch 2, average minibatch 1150 loss: 0.998
+Epoch 2, average minibatch 1200 loss: 1.032
+Epoch 2, average minibatch 1250 loss: 1.017
+Epoch 2, average minibatch 1300 loss: 1.011
+Epoch 2, average minibatch 1350 loss: 1.011
+Epoch 2, average minibatch 1400 loss: 0.993
+Epoch 2, average minibatch 1450 loss: 1.017
+mini batch 1499, val loss 1.0606465339660645
+Epoch 2, average minibatch 1500 loss: 1.022
+Epoch 2, average minibatch 1550 loss: 1.008
+Epoch 2, average minibatch 1600 loss: 0.992
+Epoch 2, average minibatch 1650 loss: 0.992
+Epoch 2, average minibatch 1700 loss: 1.011
+Epoch 2, average minibatch 1750 loss: 1.019
+Epoch 2, average minibatch 1800 loss: 1.015
+Epoch 2, average minibatch 1850 loss: 1.025
+Epoch 2, average minibatch 1900 loss: 0.990
+Epoch 2, average minibatch 1950 loss: 1.000
+Epoch 2, average minibatch 2000 loss: 1.009
+Epoch 2, average minibatch 2050 loss: 0.996
+Epoch 2, average minibatch 2100 loss: 0.993
+Epoch 2, average minibatch 2150 loss: 0.994
+Epoch 2, average minibatch 2200 loss: 1.002
+Epoch 2, average minibatch 2250 loss: 1.016
+Epoch 2, average minibatch 2300 loss: 0.989
+Epoch 2, average minibatch 2350 loss: 1.010
+Epoch 2, average minibatch 2400 loss: 0.998
+Epoch 2, average minibatch 2450 loss: 0.997
+Epoch 2, average minibatch 2500 loss: 0.987
+Epoch 2, average minibatch 2550 loss: 1.015
+Epoch 2, average minibatch 2600 loss: 0.985
+Epoch 2, average minibatch 2650 loss: 1.005
+Epoch 2, average minibatch 2700 loss: 0.969
+Epoch 2, average minibatch 2750 loss: 1.014
+Epoch 2, average minibatch 2800 loss: 1.012
+Epoch 2, average minibatch 2850 loss: 0.995
+Epoch 2, average minibatch 2900 loss: 0.999
+Epoch 2, average minibatch 2950 loss: 0.997
+mini batch 2999, val loss 1.052208423614502
+Model saved to epoch_1-batch_2999-loss_1.052208423614502-20190218-214334.pt
+Epoch 2, average minibatch 3000 loss: 1.001
+Epoch 2, average minibatch 3050 loss: 0.990
+Epoch 2, average minibatch 3100 loss: 0.993
+Epoch 2, average minibatch 3150 loss: 0.990
+Epoch 2, average minibatch 3200 loss: 0.997
+
+mini batch 0, val loss 1.0067505836486816
+Model saved to epoch_1-batch_0-loss_1.0067505836486816-20190219-013323.pt
+mini batch 2000, val loss 1.010292649269104
+Epoch 2, average minibatch 2000 loss: 0.996
+Epoch 2, average minibatch 2050 loss: 1.011
+Epoch 2, average minibatch 2100 loss: 0.997
+Epoch 2, average minibatch 2150 loss: 1.005
+Epoch 2, average minibatch 2200 loss: 0.987
+Epoch 2, average minibatch 2250 loss: 0.990
+Epoch 2, average minibatch 2300 loss: 0.956
+Epoch 2, average minibatch 2350 loss: 1.016
+Epoch 2, average minibatch 2400 loss: 0.995
+Epoch 2, average minibatch 2450 loss: 0.995
+Epoch 2, average minibatch 2500 loss: 0.995
+Epoch 2, average minibatch 2550 loss: 0.978
+Epoch 2, average minibatch 2600 loss: 1.016
+Epoch 2, average minibatch 2650 loss: 0.986
+Epoch 2, average minibatch 2700 loss: 0.988
+Epoch 2, average minibatch 2750 loss: 0.967
+Epoch 2, average minibatch 2800 loss: 0.984
+Epoch 2, average minibatch 2850 loss: 0.999
+Epoch 2, average minibatch 2900 loss: 0.998
+Epoch 2, average minibatch 2950 loss: 0.973
+Epoch 2, average minibatch 3000 loss: 0.980
+Epoch 2, average minibatch 3050 loss: 0.969
+Epoch 2, average minibatch 3100 loss: 0.962
+Epoch 2, average minibatch 3150 loss: 0.963
+Epoch 2, average minibatch 3200 loss: 0.994
+Epoch 2, average minibatch 3250 loss: 0.970
+Epoch 2, average minibatch 3300 loss: 0.974
+Epoch 2, average minibatch 3350 loss: 0.974
+Epoch 2, average minibatch 3400 loss: 0.982
+Epoch 2, average minibatch 3450 loss: 0.995
+Epoch 2, average minibatch 3500 loss: 0.992
+Epoch 2, average minibatch 3550 loss: 0.992
+Epoch 2, average minibatch 3600 loss: 0.991
+Epoch 2, average minibatch 3650 loss: 0.978
+Epoch 2, average minibatch 3700 loss: 0.980
+Epoch 2, average minibatch 3750 loss: 0.977
+Epoch 2, average minibatch 3800 loss: 0.968
+Epoch 2, average minibatch 3850 loss: 0.998
+Epoch 2, average minibatch 3900 loss: 0.978
+Epoch 2, average minibatch 3950 loss: 0.974
+mini batch 4000, val loss 1.006988525390625
+Epoch 2, average minibatch 4000 loss: 0.979
+Epoch 2, average minibatch 4050 loss: 0.981
+Epoch 2, average minibatch 4100 loss: 0.947
+Epoch 2, average minibatch 4150 loss: 0.960
+Epoch 2, average minibatch 4200 loss: 0.963
+Epoch 2, average minibatch 4250 loss: 0.974
+Epoch 2, average minibatch 4300 loss: 0.965
+Epoch 2, average minibatch 4350 loss: 0.953
+Epoch 2, average minibatch 4400 loss: 0.981
+Epoch 2, average minibatch 4450 loss: 0.990
+Epoch 2, average minibatch 4500 loss: 0.969
+Epoch 2, average minibatch 4550 loss: 0.991
+Epoch 2, average minibatch 4600 loss: 0.969
+Epoch 2, average minibatch 4650 loss: 0.969
+Epoch 2, average minibatch 4700 loss: 0.962
+Epoch 2, average minibatch 4750 loss: 0.967
+Epoch 2, average minibatch 4800 loss: 0.967
+Epoch 2, average minibatch 4850 loss: 0.941
+Epoch 2, average minibatch 4900 loss: 0.956
+Epoch 2, average minibatch 4950 loss: 0.948
+Epoch 2, average minibatch 5000 loss: 0.967
+Finished 2 epochs of training
+mini batch 0, val loss 1.0061054229736328
+Model saved to epoch_2-batch_0-loss_1.0061054229736328-20190219-034939.pt
+Epoch 3, average minibatch 50 loss: 0.955
+Epoch 3, average minibatch 100 loss: 0.961
+Epoch 3, average minibatch 150 loss: 0.937
+Epoch 3, average minibatch 200 loss: 0.972
+Epoch 3, average minibatch 250 loss: 0.955
+Epoch 3, average minibatch 300 loss: 0.937
+Epoch 3, average minibatch 350 loss: 0.947
+Epoch 3, average minibatch 400 loss: 0.952
+Epoch 3, average minibatch 450 loss: 0.946
+Epoch 3, average minibatch 500 loss: 0.972
+Epoch 3, average minibatch 550 loss: 0.964
+Epoch 3, average minibatch 600 loss: 0.968
+Epoch 3, average minibatch 650 loss: 0.957
+Epoch 3, average minibatch 700 loss: 0.977
+Epoch 3, average minibatch 750 loss: 0.938
+Epoch 3, average minibatch 800 loss: 0.936
+Epoch 3, average minibatch 850 loss: 0.952
+Epoch 3, average minibatch 900 loss: 0.965
+Epoch 3, average minibatch 950 loss: 0.957
+Epoch 3, average minibatch 1000 loss: 0.950
+Epoch 3, average minibatch 1050 loss: 0.957
+Epoch 3, average minibatch 1100 loss: 0.947
+Epoch 3, average minibatch 1150 loss: 0.944
+Epoch 3, average minibatch 1200 loss: 0.940
+Epoch 3, average minibatch 1250 loss: 0.941
+Epoch 3, average minibatch 1300 loss: 0.948
+Epoch 3, average minibatch 1350 loss: 0.960
+Epoch 3, average minibatch 1400 loss: 0.921
+Epoch 3, average minibatch 1450 loss: 0.934
+Epoch 3, average minibatch 1500 loss: 0.943
+Epoch 3, average minibatch 1550 loss: 0.947
+Epoch 3, average minibatch 1600 loss: 0.977
+Epoch 3, average minibatch 1650 loss: 0.956
+Epoch 3, average minibatch 1700 loss: 0.964
+Epoch 3, average minibatch 1750 loss: 0.938
+Epoch 3, average minibatch 1800 loss: 0.945
+Epoch 3, average minibatch 1850 loss: 0.918
+Epoch 3, average minibatch 1900 loss: 0.969
+Epoch 3, average minibatch 1950 loss: 0.943
+mini batch 2000, val loss 1.0052036046981812
+Model saved to epoch_2-batch_2000-loss_1.0052036046981812-20190219-043500.pt
+Epoch 3, average minibatch 2000 loss: 0.945
+Epoch 3, average minibatch 2050 loss: 0.905
+Epoch 3, average minibatch 2100 loss: 0.943
+Epoch 3, average minibatch 2150 loss: 0.947
+Epoch 3, average minibatch 2200 loss: 0.937
+Epoch 3, average minibatch 2250 loss: 0.934
+Epoch 3, average minibatch 2300 loss: 0.921
+Epoch 3, average minibatch 2350 loss: 0.931
+Epoch 3, average minibatch 2400 loss: 0.935
+Epoch 3, average minibatch 2450 loss: 0.916
+Epoch 3, average minibatch 2500 loss: 0.935
+Epoch 3, average minibatch 2550 loss: 0.915
+Epoch 3, average minibatch 2600 loss: 0.930
+Epoch 3, average minibatch 2650 loss: 0.955
+Epoch 3, average minibatch 2700 loss: 0.936
+Epoch 3, average minibatch 2750 loss: 0.927
+Epoch 3, average minibatch 2800 loss: 0.918
+Epoch 3, average minibatch 2850 loss: 0.921
+Epoch 3, average minibatch 2900 loss: 0.931
+Epoch 3, average minibatch 2950 loss: 0.926
+Epoch 3, average minibatch 3000 loss: 0.927
+Epoch 3, average minibatch 3050 loss: 0.922
+Epoch 3, average minibatch 3100 loss: 0.935
+Epoch 3, average minibatch 3150 loss: 0.928
+Epoch 3, average minibatch 3200 loss: 0.922
+Epoch 3, average minibatch 3250 loss: 0.916
+Epoch 3, average minibatch 3300 loss: 0.916
+Epoch 3, average minibatch 3350 loss: 0.920
+Epoch 3, average minibatch 3400 loss: 0.918
+Epoch 3, average minibatch 3450 loss: 0.916
+Epoch 3, average minibatch 3500 loss: 0.924
+Epoch 3, average minibatch 3550 loss: 0.908
+Epoch 3, average minibatch 3600 loss: 0.909
+Epoch 3, average minibatch 3650 loss: 0.918
+Epoch 3, average minibatch 3700 loss: 0.938
+Epoch 3, average minibatch 3750 loss: 0.918
+Epoch 3, average minibatch 3800 loss: 0.931
+Epoch 3, average minibatch 3850 loss: 0.909
+Epoch 3, average minibatch 3900 loss: 0.915
+Epoch 3, average minibatch 3950 loss: 0.903
+mini batch 4000, val loss 1.0123289823532104
+Epoch 3, average minibatch 4000 loss: 0.936
+Epoch 3, average minibatch 4050 loss: 0.897
+Epoch 3, average minibatch 4100 loss: 0.920
+Epoch 3, average minibatch 4150 loss: 0.915
+Epoch 3, average minibatch 4200 loss: 0.922
+Epoch 3, average minibatch 4250 loss: 0.911
+Epoch 3, average minibatch 4300 loss: 0.906
+Epoch 3, average minibatch 4350 loss: 0.907
+Epoch 3, average minibatch 4400 loss: 0.910
+Epoch 3, average minibatch 4450 loss: 0.920
+Epoch 3, average minibatch 4500 loss: 0.924
+Epoch 3, average minibatch 4550 loss: 0.893
+Epoch 3, average minibatch 4600 loss: 0.918
+Epoch 3, average minibatch 4650 loss: 0.907
+Epoch 3, average minibatch 4700 loss: 0.917
+Epoch 3, average minibatch 4750 loss: 0.921
+Epoch 3, average minibatch 4800 loss: 0.903
+Epoch 3, average minibatch 4850 loss: 0.898
+Epoch 3, average minibatch 4900 loss: 0.920
+Epoch 3, average minibatch 4950 loss: 0.901
+Epoch 3, average minibatch 5000 loss: 0.886
+Finished 3 epochs of training
+mini batch 0, val loss 1.0070974826812744
+Epoch 4, average minibatch 50 loss: 0.918
+Epoch 4, average minibatch 100 loss: 0.894
+Epoch 4, average minibatch 150 loss: 0.894
+Epoch 4, average minibatch 200 loss: 0.899
+Epoch 4, average minibatch 250 loss: 0.907
+Epoch 4, average minibatch 300 loss: 0.905
+Epoch 4, average minibatch 350 loss: 0.897
+Epoch 4, average minibatch 400 loss: 0.898
+Epoch 4, average minibatch 450 loss: 0.893
+Epoch 4, average minibatch 500 loss: 0.879
+Epoch 4, average minibatch 550 loss: 0.917
+Epoch 4, average minibatch 600 loss: 0.921
+Epoch 4, average minibatch 650 loss: 0.911
+Epoch 4, average minibatch 700 loss: 0.891
+Epoch 4, average minibatch 750 loss: 0.892
+Epoch 4, average minibatch 800 loss: 0.891
+Epoch 4, average minibatch 850 loss: 0.877
+Epoch 4, average minibatch 900 loss: 0.876
+Epoch 4, average minibatch 950 loss: 0.900
+Epoch 4, average minibatch 1000 loss: 0.893
+Epoch 4, average minibatch 1050 loss: 0.905
+Epoch 4, average minibatch 1100 loss: 0.887
+Epoch 4, average minibatch 1150 loss: 0.889
+Epoch 4, average minibatch 1200 loss: 0.901
+Epoch 4, average minibatch 1250 loss: 0.882
+Epoch 4, average minibatch 1300 loss: 0.873
+Epoch 4, average minibatch 1350 loss: 0.871
+Epoch 4, average minibatch 1400 loss: 0.892
+Epoch 4, average minibatch 1450 loss: 0.896
+Epoch 4, average minibatch 1500 loss: 0.882
+Epoch 4, average minibatch 1550 loss: 0.888
+Epoch 4, average minibatch 1600 loss: 0.884
+Epoch 4, average minibatch 1650 loss: 0.885
+Epoch 4, average minibatch 1700 loss: 0.896
+Epoch 4, average minibatch 1750 loss: 0.878
+Epoch 4, average minibatch 1800 loss: 0.887
+Epoch 4, average minibatch 1850 loss: 0.901
+Epoch 4, average minibatch 1900 loss: 0.876
+Epoch 4, average minibatch 1950 loss: 0.880
+mini batch 2000, val loss 1.0112032890319824
+Epoch 4, average minibatch 2000 loss: 0.878
+Epoch 4, average minibatch 2050 loss: 0.881
+Epoch 4, average minibatch 2100 loss: 0.869
+Epoch 4, average minibatch 2150 loss: 0.878
+Epoch 4, average minibatch 2200 loss: 0.879
+Epoch 4, average minibatch 2250 loss: 0.865
+Epoch 4, average minibatch 2300 loss: 0.881
+Epoch 4, average minibatch 2350 loss: 0.890
+Epoch 4, average minibatch 2400 loss: 0.863
+Epoch 4, average minibatch 2450 loss: 0.860
+Epoch 4, average minibatch 2500 loss: 0.874
+Epoch 4, average minibatch 2550 loss: 0.873
+Epoch 4, average minibatch 2600 loss: 0.877
+Epoch 4, average minibatch 2650 loss: 0.874
+Epoch 4, average minibatch 2700 loss: 0.868
+Epoch 4, average minibatch 2750 loss: 0.899
+Epoch 4, average minibatch 2800 loss: 0.880
+Epoch 4, average minibatch 2850 loss: 0.875
+Epoch 4, average minibatch 2900 loss: 0.863
+Epoch 4, average minibatch 2950 loss: 0.879
+Epoch 4, average minibatch 3000 loss: 0.877
+Epoch 4, average minibatch 3050 loss: 0.842
+Epoch 4, average minibatch 3100 loss: 0.870
+Epoch 4, average minibatch 3150 loss: 0.858
+Epoch 4, average minibatch 3200 loss: 0.846
+Epoch 4, average minibatch 3250 loss: 0.875
+Epoch 4, average minibatch 3300 loss: 0.860
+Epoch 4, average minibatch 3350 loss: 0.860
+Epoch 4, average minibatch 3400 loss: 0.883
+Epoch 4, average minibatch 3450 loss: 0.882
+Epoch 4, average minibatch 3500 loss: 0.888
+Epoch 4, average minibatch 3550 loss: 0.846
+Epoch 4, average minibatch 3600 loss: 0.864
+Epoch 4, average minibatch 3650 loss: 0.878
+Epoch 4, average minibatch 3700 loss: 0.854
+Epoch 4, average minibatch 3750 loss: 0.854
+Epoch 4, average minibatch 3800 loss: 0.863
+Epoch 4, average minibatch 3850 loss: 0.873
+Epoch 4, average minibatch 3900 loss: 0.848
+Epoch 4, average minibatch 3950 loss: 0.863
+mini batch 4000, val loss 1.0083128213882446
+Epoch 4, average minibatch 4000 loss: 0.853
+Epoch 4, average minibatch 4050 loss: 0.877
+Epoch 4, average minibatch 4100 loss: 0.843
+Epoch 4, average minibatch 4150 loss: 0.846
+Epoch 4, average minibatch 4200 loss: 0.875
+Epoch 4, average minibatch 4250 loss: 0.863
+Epoch 4, average minibatch 4300 loss: 0.860
+Epoch 4, average minibatch 4350 loss: 0.873
+Epoch 4, average minibatch 4400 loss: 0.852
+Epoch 4, average minibatch 4450 loss: 0.857
+Epoch 4, average minibatch 4500 loss: 0.853
+Epoch 4, average minibatch 4550 loss: 0.871
+Epoch 4, average minibatch 4600 loss: 0.860
+Epoch 4, average minibatch 4650 loss: 0.861
+Epoch 4, average minibatch 4700 loss: 0.861
+Epoch 4, average minibatch 4750 loss: 0.839
+Epoch 4, average minibatch 4800 loss: 0.858
+Epoch 4, average minibatch 4850 loss: 0.846
+Epoch 4, average minibatch 4900 loss: 0.856
+Epoch 4, average minibatch 4950 loss: 0.837
+Epoch 4, average minibatch 5000 loss: 0.873
+Finished 4 epochs of training
+mini batch 0, val loss 1.0026615858078003
+Model saved to epoch_4-batch_0-loss_1.0026615858078003-20190219-074201.pt
+Epoch 5, average minibatch 50 loss: 0.849
+Epoch 5, average minibatch 100 loss: 0.835
+Epoch 5, average minibatch 150 loss: 0.833
+Epoch 5, average minibatch 200 loss: 0.837
+Epoch 5, average minibatch 250 loss: 0.835
+Epoch 5, average minibatch 300 loss: 0.856
+Epoch 5, average minibatch 350 loss: 0.836

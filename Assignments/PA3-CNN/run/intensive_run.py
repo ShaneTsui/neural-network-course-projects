@@ -1,11 +1,11 @@
-from intensive_cnn import *
+from models.intensive_cnn import *
 import torch.optim as optim
 import time
 import os
 import pathlib
-from Evaluation import *
+from utils.Evaluation import *
 from torch.optim.lr_scheduler import ReduceLROnPlateau
-from loss import weighted_loss, w_cel_loss
+from utils.loss import weighted_loss, w_cel_loss
 
 
 def main(loss_function):
