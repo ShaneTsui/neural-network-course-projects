@@ -1,4 +1,5 @@
 from basic_lstm import *
+from music_dataloader import *
 
 import torch
 import torch.nn as nn
@@ -32,15 +33,24 @@ def main():
     # config
     config = {}
     config['num_epoch'] = 100
-    # config['batch_size'] = 20
+    config['batch_size'] = 1
     config['learning_rate'] = 0.01
 
+    # load data
+    train = MusicDataset(dir='./pa4Data/train.txt')
+    val = MusicDataset(dir='./pa4Data/val.txt')
+    test = MusicDataset(dir='./pa4Data/test.txt')
+    train_loader = Dataloader(train, batch_size=config['batch_size'])
+    val_loader = Dataloader(val, batch_size=config['batch_size'])
+    test_loader = Dataloader(test, batch_size=config['batch_size'])
+
+    
     # create model
     model = BasicLSTM()
     model = model.to(computing_device)
 
     # define loss function
-    loss = nn.CrossEntropyLoss()
+    criterion = nn.CrossEntropyLoss()
 
     # initialize optimizer
     optimizer = optim.Adam(model.parameters(), lr=config['learning_rate'])
@@ -48,8 +58,23 @@ def main():
     # training loops
     for epoch in range(config['num_epoch']):
 
-        for batch, (this, nxt) in enumerate(train_loader):
-            this, nxt = chunks.to(computing_device), labels.to(computing_device)
+        for batch_count, (this, nxt) in enumerate(train_loader):
+
+            # use GPU if supported
+            this, nxt = this.to(computing_device), nxt.to(computing_device)
+
+            # zero out gradient
+            optimizer.zero_grad()
+
+            # compute outputs and loss
+            outputs = model(this)
+            loss = criterion(this, nxt)
+
+            # backprop
+            loss.backward()
+
+            # update the parameters
+            optimizer.step()
     
 
 

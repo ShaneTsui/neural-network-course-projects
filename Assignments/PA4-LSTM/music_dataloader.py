@@ -5,7 +5,7 @@ import numpy as np
 
 class MusicDataset(Dataset):
 
-    def __init__(self, dir='./pa4Data/train.txt', chunk_size=100, batch_size=10):
+    def __init__(self, dir='./pa4Data/train.txt', chunk_size=100):
         self.chunk_size = chunk_size
         # self.batch_size = batch_size
         with open(dir, 'r') as f:
@@ -13,13 +13,13 @@ class MusicDataset(Dataset):
         self.create_encoding()
 
     def __len__(self):
-        return len(self.raw) - self.chunk_size + 1
+        return len(self.raw) // self.chunk_size + 1
 
     def __getitem__(self, idx):
-        assert idx <= len(self.raw) - self.chunk_size
-        this = self.raw[idx:idx+self.chunk_size]
-        nxt = self.raw[idx+1:idx+self.chunk_size+1]
-        return sel.encode(this), self.encode(nxt)
+        assert idx <= len(self.raw) // self.chunk_size
+        this = self.raw[idx*self.chunk_size : (idx+1)self.chunk_size]
+        nxt = self.raw[idx*self.chunk_size+1 : (idx+1)self.chunk_size+1]
+        return self.encode(this), self.encode(nxt)
 
     def create_encoding(self):
         # create one-hot encoding dict
@@ -36,7 +36,3 @@ class MusicDataset(Dataset):
         onehot.scatter_(2, idx, 1)
         return onehot
 
-class MusicDataloader(Dataloader):
-
-    def __init__(self):
-        None
