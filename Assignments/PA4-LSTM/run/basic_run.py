@@ -1,5 +1,5 @@
 from basic_lstm import *
-from data.music_dataloader import *
+from dataloader.music_dataloader import *
 
 import torch
 import torch.nn as nn
@@ -39,7 +39,7 @@ def main():
     config['learning_rate'] = 0.01
     encoding, config['input_size'] = create_encoding()
 
-    # load data
+    # load dataloader
     train = MusicDataset(dirstr='./pa4Data/train.txt', encoding=encoding, input_size=config['input_size'], chunk_size=config['chunk_size'])
     val = MusicDataset(dirstr='./pa4Data/val.txt', encoding=encoding, input_size=config['input_size'], chunk_size=config['chunk_size'])
     test = MusicDataset(dirstr='./pa4Data/test.txt', encoding=encoding, input_size=config['input_size'], chunk_size=config['chunk_size'])
