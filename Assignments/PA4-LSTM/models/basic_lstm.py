@@ -4,7 +4,6 @@ import torch.optim as optim
 from torch.autograd import Variable
 
 import numpy as np
-import matplotlib.pyplot as plt
 
 class BasicLSTM(nn.Module):
 
@@ -25,4 +24,5 @@ class BasicLSTM(nn.Module):
 
     def forward(self, input):
         output, self.hidden = self.lstm(input, self.hidden)
-        return nn.Softmax(output)
+        return output
+        
