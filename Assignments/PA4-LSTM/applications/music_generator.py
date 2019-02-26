@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from data.text_dataloader import split_dataset
+from dataloader.text_dataloader import split_dataset
 from torch.optim.lr_scheduler import ReduceLROnPlateau
 from models.rnn import RNN
 
