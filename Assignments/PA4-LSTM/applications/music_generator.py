@@ -62,7 +62,7 @@ class MusicGenerator:
         self.hidden_train = self.model.init_hidden(type=model_type)
 
         self.optimizer = optim.Adam(self.model.parameters(), lr=learning_rate)
-        self.scheduler = ReduceLROnPlateau(self.optimizer, 'min')
+        # self.scheduler = ReduceLROnPlateau(self.optimizer, 'min')
 
         # Some variables for training
         self.minibatch_counter = 0
@@ -88,7 +88,7 @@ class MusicGenerator:
 
                 loss = self.cross_entropy(outputs, targets)
                 tensorboard_logger.log_value('total_loss', loss.item(), self.minibatch_counter)
-                N_minibatch_train_loss += loss
+                N_minibatch_train_loss += loss.item()
 
                 loss.backward()
                 self.optimizer.step()
@@ -105,7 +105,7 @@ class MusicGenerator:
                           (epoch + 1, self.minibatch_counter, N_minibatch_train_loss))
 
                     # Add the averaged loss over N minibatches and reset the counter
-                    tensorboard_logger.log_value('avg_train_loss', N_minibatch_train_loss.item(), self.minibatch_counter)
+                    tensorboard_logger.log_value('avg_train_loss', N_minibatch_train_loss, self.minibatch_counter)
                     N_minibatch_train_loss = 0.0
 
                 if self.is_converged:
@@ -136,7 +136,7 @@ class MusicGenerator:
             val_loss /= (val_batch_count + 1)
             print("\nmini batch {}, val loss{}".format(self.minibatch_counter, val_loss))
             tensorboard_logger.log_value('val_loss', val_loss.item(), self.minibatch_counter)
-            self.scheduler.step(val_loss)
+            # self.scheduler.step(val_loss)
 
             if val_loss < self.val_loss_min:
                 model_name = os.path.join(self.model_path, "epoch_{}-batch_{}-loss_{}-{}.pt".format(epoch, self.minibatch_counter, val_loss,
@@ -167,11 +167,26 @@ class MusicGenerator:
             if self.early_stop_counter >= early_stop_n:
                 self.is_converged = True
 
-    def test(self):
-        checkpoint = torch.load(self.best_model)
+    def test(self, best_model=None):
+
+        if not best_model:
+            best_model = self.best_model
+
+        # Check if your system supports CUDA
+        use_cuda = torch.cuda.is_available()
+
+        # Setup GPU optimization if CUDA is supported
+        if use_cuda:
+            computing_device = torch.device("cuda")
+            print("CUDA is supported")
+        else:  # Otherwise, train on the CPU
+            computing_device = torch.device("cpu")
+            print("CUDA NOT supported")
+
+        checkpoint = torch.load(best_model)
         input_size = output_size = self.conf_train['voc_size']
         hidden_size = self.conf_train['hidden_size']
-        model = RNN(input_size=input_size, output_size=output_size, hidden_size=hidden_size)
+        model = RNN(input_size=input_size, output_size=output_size, hidden_size=hidden_size, type=self.conf['model_type']).to(computing_device)
         model.load_state_dict(checkpoint['model_state_dict'])
 
         model.eval()
@@ -179,8 +194,8 @@ class MusicGenerator:
             test_loss = 0
             hidden_test = checkpoint['hidden']
             for test_batch_count, (inputs_test, labels_test) in enumerate(self.dataloader_test):
-                inputs_test, labels_test = inputs_test.to(self.computing_device), labels_test.to(self.computing_device)
-                outputs_test, hidden_test = self.model(inputs_test, hidden_test)
+                inputs_test, labels_test = inputs_test.to(computing_device), labels_test.to(computing_device)
+                outputs_test, hidden_test = model(inputs_test, hidden_test)
                 loss = self.cross_entropy(outputs_test, labels_test)
                 test_loss += loss
             test_loss /= (test_batch_count + 1)
