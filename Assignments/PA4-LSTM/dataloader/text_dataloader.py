@@ -1,16 +1,18 @@
 import torch
 import yaml
+import random
 from torch.utils.data import Dataset, DataLoader
 from utils.utils import file_preprocess
 
 class TextDataset(Dataset):
 
-    def  __init__(self, conf):
+    def  __init__(self, conf, shuffle=False):
         self.filename = conf['filename']
         self.chunk_size = conf['chunk_size']
         self.voc_size = conf['voc_size']
         self.char2num = conf['char2num']
         self.num2char = conf['num2char']
+        self.shuffle = shuffle
         try:
             with open(self.filename, 'r') as f:
                 self.text = f.read()
@@ -40,6 +42,10 @@ class TextDataset(Dataset):
         target_idx = torch.LongTensor([self.char2num[ch] for ch in txt[1:]])
         target_idx.resize_((len(target_idx), 1))
 
+        # shuffle at the last batch
+        if self.shuffle and right_boundary == self.text_length:
+            self._shuffle()
+
         return self._encode(input_idx, target_idx)
 
     # input and target are 2 tensors of char index
@@ -61,6 +67,12 @@ class TextDataset(Dataset):
         vector[idx] = 1
         return vector
 
+    def _shuffle(self):
+        text = self.text
+        scores = text.strip().split("<end>")
+        random.shuffle(scores)
+        self.text = "<end>".join(scores)+"<end>"
+
     @property
     def vocabulary_size(self):
         return self.voc_size
@@ -77,7 +89,7 @@ def split_dataset(filename):
     conf_val['voc_size'], conf_val['char2num'], conf_val['num2char'] = voc_size, char2num, num2char
     conf_test['voc_size'], conf_test['char2num'], conf_test['num2char'] = voc_size, char2num, num2char
 
-    dataset_train = TextDataset(conf_train)
+    dataset_train = TextDataset(conf_train, shuffle=True)
     dataset_val = TextDataset(conf_val)
     dataset_test = TextDataset(conf_test)
 
