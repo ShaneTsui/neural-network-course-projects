@@ -90,7 +90,7 @@ class MusicGenerator:
                 tensorboard_logger.log_value('total_loss', loss.item(), self.minibatch_counter)
                 N_minibatch_train_loss += loss
 
-                loss.backward(retain_graph=True)
+                loss.backward()
                 self.optimizer.step()
 
                 # Validation
@@ -125,11 +125,7 @@ class MusicGenerator:
         self.model.eval()
         with torch.no_grad():
             val_loss = 0
-
-            if model_type == 'LSTM':
-                hidden_val = (self.hidden_train[0].clone(), self.hidden_train[1].clone())
-            elif model_type == 'GRU':
-                hidden_val = self.hidden_train.clone()
+            hidden_val = self.model.init_hidden(model_type)
 
             for val_batch_count, (inputs_val, labels_val) in enumerate(self.dataloader_val):
                 inputs_val, labels_val = inputs_val.to(self.computing_device), labels_val.to(self.computing_device)

@@ -6,6 +6,7 @@ import torch.nn.functional as func
 class RNN(nn.Module):
     def __init__(self, input_size, hidden_size, output_size, num_layers=1, type='LSTM', batch_size=1):
         super(RNN, self).__init__()
+        self.type = type
         # torch.set_default_tensor_type('torch.cuda.LongTensor')
         if type == 'LSTM':
             self.rnn = nn.LSTM(input_size=input_size, hidden_size=hidden_size, num_layers=num_layers, batch_first=True)
@@ -16,12 +17,15 @@ class RNN(nn.Module):
 
         self.num_layers, self.batch_size, self.hidden_size = num_layers, batch_size, hidden_size
         self.decoder = nn.Linear(hidden_size, output_size)
-        self.softmax = nn.Softmax(dim=2)
+        # self.softmax = nn.Softmax(dim=2)
 
     # Input dim: (batch_size, seq_len, num_class)
     def forward(self, input, hidden):
         output, hidden = self.rnn(input, hidden)
-        return self.decoder(output), hidden
+        if self.type == 'LSTM':
+            return self.decoder(output), (hidden[0].detach(), hidden[1].detach())
+        elif self.type == 'GRU':
+            return self.decoder(output), hidden.detach()
 
     def init_hidden(self, type='LSTM'):
         if type == 'LSTM':
