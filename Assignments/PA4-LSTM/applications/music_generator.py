@@ -10,7 +10,7 @@ import time
 import pathlib
 import copy
 from tqdm import tqdm
-import tensorboard_logger
+from tensorboardX import SummaryWriter
 
 class MusicGenerator:
 
@@ -31,6 +31,7 @@ class MusicGenerator:
         hidden_size = self.conf_train['hidden_size']
         learning_rate = self.conf_train['learning_rate']
         val_every_n = self.conf_val['val_every_n']
+        plot_train_per_n = self.conf_train['plot_per_n']
 
         # Set up folder for model saving
         cur_time = time.strftime("%Y%m%d-%H%M%S")
@@ -62,20 +63,20 @@ class MusicGenerator:
         self.hidden_train = self.model.init_hidden(type=model_type)
 
         self.optimizer = optim.Adam(self.model.parameters(), lr=learning_rate)
-        # self.scheduler = ReduceLROnPlateau(self.optimizer, 'min')
+        self.scheduler = ReduceLROnPlateau(self.optimizer, 'min', patience=15, )
 
         # Some variables for training
-        self.minibatch_counter = 0
+        self.minibatch_counter = -1
         self.val_loss_min = float('inf')
         self.early_stop_counter = 0
         self.is_converged = False
-        tensorboard_logger.configure(result_path, flush_secs=2)
+        self.writer = SummaryWriter(result_path)
 
         # Start training
         for epoch in range(epoches):
 
-            N = 50
             N_minibatch_train_loss = 0.0
+            total_loss = 0.0
 
             for inputs, targets in tqdm(self.dataloader_train):
                 self.minibatch_counter += 1
@@ -87,7 +88,7 @@ class MusicGenerator:
                 outputs, self.hidden_train = self.model(inputs, self.hidden_train)
 
                 loss = self.cross_entropy(outputs, targets)
-                tensorboard_logger.log_value('total_loss', loss.item(), self.minibatch_counter)
+                total_loss += loss.item()
                 N_minibatch_train_loss += loss.item()
 
                 loss.backward()
@@ -98,18 +99,22 @@ class MusicGenerator:
                     self.val(epoch)
 
                 # Calculate avg train loss
-                if self.minibatch_counter % N == 0:
+                if self.minibatch_counter % plot_train_per_n == 0:
                     # Print the loss averaged over the last N mini-batches
-                    N_minibatch_train_loss /= N
+                    N_minibatch_train_loss /= plot_train_per_n
                     print('Epoch %d, average minibatch %d loss: %.3f' %
                           (epoch + 1, self.minibatch_counter, N_minibatch_train_loss))
 
                     # Add the averaged loss over N minibatches and reset the counter
-                    tensorboard_logger.log_value('avg_train_loss', N_minibatch_train_loss, self.minibatch_counter)
+                    self.writer.add_scalars('loss', {'train_loss_per_%d_batches' %(plot_train_per_n): \
+                                                 N_minibatch_train_loss}, self.minibatch_counter)
                     N_minibatch_train_loss = 0.0
 
                 if self.is_converged:
                     break
+            train_loss_avg = total_loss / len(self.dataloader_train)
+            print('Epoch %d, average training loss: %.3f' %(epoch, train_loss_avg))
+            self.writer.add_scalars('loss', {'train_loss_per_epoch': train_loss_avg}, self.minibatch_counter)
 
             print("Finished", epoch + 1, "epochs of training")
 
@@ -134,8 +139,8 @@ class MusicGenerator:
                 val_loss += loss
 
             val_loss /= (val_batch_count + 1)
-            print("\nmini batch {}, val loss{}".format(self.minibatch_counter, val_loss))
-            tensorboard_logger.log_value('val_loss', val_loss.item(), self.minibatch_counter)
+            print("\nmini batch {}, val loss: {}".format(self.minibatch_counter, val_loss))
+            self.writer.add_scalars('loss', {'val_loss': val_loss.item()}, self.minibatch_counter)
             # self.scheduler.step(val_loss)
 
             if val_loss < self.val_loss_min:
