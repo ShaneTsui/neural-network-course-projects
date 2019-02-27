@@ -5,10 +5,10 @@ from dataloader.text_dataloader import split_dataset
 from torch.optim.lr_scheduler import ReduceLROnPlateau
 from models.rnn import RNN
 
+
 import os
 import time
 import pathlib
-import copy
 from tqdm import tqdm
 from tensorboardX import SummaryWriter
 
@@ -18,17 +18,12 @@ class MusicGenerator:
         self.dataloader_train, self.dataloader_val, self.dataloader_test, self.conf = split_dataset(conf_path)
         self.conf_train, self.conf_val, self.conf_test = self.conf['train'], self.conf['val'], self.conf['test']
 
-    def cross_entropy(self, input_, target, reduction='elementwise_mean'):
-        logsoftmax = nn.LogSoftmax(dim=2)
-        res = - target * logsoftmax(input_)
-        return torch.mean(torch.sum(res, dim=2))
-
     def train(self):
 
         model_type = self.conf['model_type']
         epoches = self.conf_train['epochs']
         input_size = output_size = self.conf_train['voc_size']
-        hidden_size = self.conf_train['hidden_size']
+        self.hidden_size = self.conf_train['hidden_size']
         learning_rate = self.conf_train['learning_rate']
         val_every_n = self.conf_val['val_every_n']
         plot_train_per_n = self.conf_train['plot_per_n']
@@ -58,15 +53,15 @@ class MusicGenerator:
             print("CUDA NOT supported")
 
         # Model
-        self.model = RNN(input_size=input_size, hidden_size=hidden_size, output_size=output_size, type=model_type)
+        self.model = RNN(input_size=input_size, hidden_size=self.hidden_size, output_size=output_size, type=model_type)
         self.model.to(self.computing_device)
         self.hidden_train = self.model.init_hidden(type=model_type)
 
         self.optimizer = optim.Adam(self.model.parameters(), lr=learning_rate)
-        self.scheduler = ReduceLROnPlateau(self.optimizer, 'min', patience=15, )
+        self.scheduler = ReduceLROnPlateau(self.optimizer, 'min', patience=15)
 
         # Some variables for training
-        self.minibatch_counter = -1
+        self.minibatch_counter = 0
         self.val_loss_min = float('inf')
         self.early_stop_counter = 0
         self.is_converged = False
@@ -87,7 +82,7 @@ class MusicGenerator:
 
                 outputs, self.hidden_train = self.model(inputs, self.hidden_train)
 
-                loss = self.cross_entropy(outputs, targets)
+                loss = self._cross_entropy(outputs, targets)
                 total_loss += loss.item()
                 N_minibatch_train_loss += loss.item()
 
@@ -112,6 +107,7 @@ class MusicGenerator:
 
                 if self.is_converged:
                     break
+
             train_loss_avg = total_loss / len(self.dataloader_train)
             print('Epoch %d, average training loss: %.3f' %(epoch, train_loss_avg))
             self.writer.add_scalars('loss', {'train_loss_per_epoch': train_loss_avg}, self.minibatch_counter)
@@ -135,21 +131,21 @@ class MusicGenerator:
             for val_batch_count, (inputs_val, labels_val) in enumerate(self.dataloader_val):
                 inputs_val, labels_val = inputs_val.to(self.computing_device), labels_val.to(self.computing_device)
                 val_outputs, hidden_val = self.model(inputs_val, hidden_val)
-                loss = self.cross_entropy(val_outputs, labels_val)
+                loss = self._cross_entropy(val_outputs, labels_val)
                 val_loss += loss
 
             val_loss /= (val_batch_count + 1)
             print("\nmini batch {}, val loss: {}".format(self.minibatch_counter, val_loss))
             self.writer.add_scalars('loss', {'val_loss': val_loss.item()}, self.minibatch_counter)
-            # self.scheduler.step(val_loss)
+            self.scheduler.step(val_loss)
 
             if val_loss < self.val_loss_min:
-                model_name = os.path.join(self.model_path, "epoch_{}-batch_{}-loss_{}-{}.pt".format(epoch, self.minibatch_counter, val_loss,
+                model_name = os.path.join(self.model_path, "H{}_epoch_{}-batch_{}-loss_{}-{}.pt".format(self.hidden_size, epoch, self.minibatch_counter, val_loss,
                                                                       time.strftime("%Y%m%d-%H%M%S")))
 
                 if model_type == 'LSTM':
                     hidden_to_save = (self.hidden_train[0].clone(), self.hidden_train[1].clone())
-                elif model_type == 'GRU':
+                elif model_type == 'GRU' or model_type == 'Vanilla':
                     hidden_to_save = self.hidden_train.clone()
 
                 torch.save({
@@ -172,11 +168,27 @@ class MusicGenerator:
             if self.early_stop_counter >= early_stop_n:
                 self.is_converged = True
 
+    # Specify the model to use
     def test(self, best_model=None):
 
         if not best_model:
             best_model = self.best_model
 
+        model, computing_device = self._load_model(best_model)
+        hidden_test = model.init_hidden(type=self.conf['model_type'])
+        model.eval()
+        with torch.no_grad():
+            test_loss = 0
+            for test_batch_count, (inputs_test, labels_test) in enumerate(self.dataloader_test):
+                inputs_test, labels_test = inputs_test.to(computing_device), labels_test.to(computing_device)
+                outputs_test, hidden_test = model(inputs_test, hidden_test)
+                loss = self._cross_entropy(outputs_test, labels_test)
+                test_loss += loss
+            test_loss /= (test_batch_count + 1)
+            print("test loss = {}".format(test_loss))
+            return test_loss
+
+    def _load_model(self, best_model):
         # Check if your system supports CUDA
         use_cuda = torch.cuda.is_available()
 
@@ -191,25 +203,19 @@ class MusicGenerator:
         checkpoint = torch.load(best_model)
         input_size = output_size = self.conf_train['voc_size']
         hidden_size = self.conf_train['hidden_size']
-        model = RNN(input_size=input_size, output_size=output_size, hidden_size=hidden_size, type=self.conf['model_type']).to(computing_device)
+        model = RNN(input_size=input_size, output_size=output_size, hidden_size=hidden_size,
+                    type=self.conf['model_type']).to(computing_device)
         model.load_state_dict(checkpoint['model_state_dict'])
+        return model, computing_device
 
-        model.eval()
-        with torch.no_grad():
-            test_loss = 0
-            hidden_test = checkpoint['hidden']
-            for test_batch_count, (inputs_test, labels_test) in enumerate(self.dataloader_test):
-                inputs_test, labels_test = inputs_test.to(computing_device), labels_test.to(computing_device)
-                outputs_test, hidden_test = model(inputs_test, hidden_test)
-                loss = self.cross_entropy(outputs_test, labels_test)
-                test_loss += loss
-            test_loss /= (test_batch_count + 1)
-            print("test loss = {}".format(test_loss))
-            return test_loss
+    def _cross_entropy(self, input_, target, reduction='elementwise_mean'):
+        logsoftmax = nn.LogSoftmax(dim=2)
+        res = - target * logsoftmax(input_)
+        return torch.mean(torch.sum(res, dim=2))
 
     # Todo: Train from a saved model
     def cont_train(self, model_path, model_name):
         pass
 
-    def generate(self, temperature):
+    def temp_generate(self, model_path=None, temperature=0.8, prime_str='<start>', max_len=1000):
         pass
