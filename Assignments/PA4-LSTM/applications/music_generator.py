@@ -1,9 +1,12 @@
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from dataloader.text_dataloader import split_dataset
+import torch.nn.functional as F
 from torch.optim.lr_scheduler import ReduceLROnPlateau
+
 from models.rnn import RNN
+from utils.utils import one_hot_encode
+from dataloader.text_dataloader import split_dataset
 
 
 import os
@@ -218,4 +221,38 @@ class MusicGenerator:
         pass
 
     def temp_generate(self, model_path=None, temperature=0.8, prime_str='<start>', max_len=1000):
-        pass
+        # If model is not specified, we just use current model
+        if not model_path:
+            model = self.model
+        else:
+            model, computing_device = self._load_model(model_path)
+
+        model.eval()
+        with torch.no_grad():
+            hidden_value = model.init_hidden()
+            char2num = self.conf_train['char2num']
+            num2char = self.conf_train['num2char']
+            voc_size = self.conf_train['voc_size']
+            chunk_size = len(prime_str)
+
+            creation = prime_str
+            input_idx = torch.LongTensor([char2num[ch] for ch in prime_str]).to(computing_device)
+            input_idx.resize_((len(input_idx), 1))
+            input = torch.zeros(chunk_size, voc_size).to(computing_device)
+            input.scatter_(1, input_idx, 1.)
+
+            for i in range(len(input) - 1):
+                _, hidden_value = model(input[i].view(1, 1, -1), hidden_value)
+
+            # Generate rest of sequence
+            for j in range(max_len):
+                next_input = one_hot_encode(char2num[creation[-1]], voc_size).to(computing_device)
+                out, hidden_value = model(next_input.view(1, 1, -1), hidden_value)
+                prediction_vector = F.softmax(out.view(-1) / temperature)
+                pred = torch.multinomial(prediction_vector, 1)
+
+                creation += num2char[pred.item()]
+                if creation[-5:] == '<end>':
+                    break
+
+            return creation
