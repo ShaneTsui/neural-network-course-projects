@@ -1,9 +1,13 @@
+import numpy as np
 import torch
 import torch.nn as nn
 import torch.optim as optim
+from torch.autograd import Variable
+import torch.nn.functional as F
 from dataloader.text_dataloader import split_dataset
 from torch.optim.lr_scheduler import ReduceLROnPlateau
 from models.rnn import RNN
+from utils.utils import *
 
 
 import os
@@ -11,6 +15,7 @@ import time
 import pathlib
 from tqdm import tqdm
 from tensorboardX import SummaryWriter
+
 
 class MusicGenerator:
 
@@ -217,5 +222,41 @@ class MusicGenerator:
     def cont_train(self, model_path, model_name):
         pass
 
-    def temp_generate(self, model_path=None, temperature=0.8, prime_str='<start>', max_len=1000):
-        pass
+    def generate(self, model_path=None, temperature=0.8, prime_str='<start>', max_len=1000, out_filename=None):
+        if not model_path:
+            model = self.model
+            computing_device = self.computing_device
+        else:
+            model, computing_device = self._load_model(model_path)
+
+        hidden_generate = model.init_hidden()
+
+        song = prime_str
+        voc_size, char2num, num2char = file_preprocess("./pa4Data/train.txt")
+
+        for i in range(len(prime_str) - 1):
+            inputs = encode(prime_str[i], char2num)
+            inputs = torch.FloatTensor(inputs[np.newaxis, np.newaxis, :])
+            _, hidden_generate = model(Variable(inputs.to(computing_device)), hidden_generate)
+
+        # Generate rest of sequence
+        for i in range(max_len):
+            inputs = encode(song[-1], char2num)
+            inputs = torch.FloatTensor(inputs[np.newaxis, np.newaxis, :])
+            output, hidden_generate = model(Variable(inputs.to(computing_device)), hidden_generate)
+
+            prob = F.softmax(output.view(-1) / temperature)
+            picked = torch.multinomial(prob, 1)
+
+            song += num2char[picked.item()]
+
+            if song[-5:] == '<end>':
+                break
+
+        if out_filename is None:
+            out_file = open('generated_song.txt', 'w')
+        else:
+            out_file = open(out_filename, 'w')
+        out_file.write(song)
+        out_file.close()
+        print("song generated")
