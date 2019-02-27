@@ -108,14 +108,16 @@ class MusicGenerator:
                 if self.is_converged:
                     break
 
+            if self.is_converged:
+                break
+
             train_loss_avg = total_loss / len(self.dataloader_train)
             print('Epoch %d, average training loss: %.3f' %(epoch, train_loss_avg))
             self.writer.add_scalars('loss', {'train_loss_per_epoch': train_loss_avg}, self.minibatch_counter)
 
             print("Finished", epoch + 1, "epochs of training")
 
-            if self.is_converged:
-                break
+
 
         print("Training complete after", epoch, "epochs")
 
