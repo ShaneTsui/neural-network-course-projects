@@ -1,9 +1,9 @@
-model_type: 'GRU'
+model_type: 'LSTM'
 
 train:
  filename: './pa4Data/train.txt'
  chunk_size: 100
- hidden_size: 100
+ hidden_size: 50
  epochs: 100
  learning_rate: 0.0005
  plot_per_n: 100
