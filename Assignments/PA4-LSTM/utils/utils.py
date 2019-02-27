@@ -6,6 +6,10 @@ def encode(character, char2num):
     one_hot_encode[char2num[character]] = 1.
     return one_hot_encode
 
+def one_hot_encode(idx, voc_size):
+    vector = torch.zeros(voc_size)
+    vector[idx] = 1.
+    return vector
 
 def file_preprocess(filename):
     with open(filename) as f:
