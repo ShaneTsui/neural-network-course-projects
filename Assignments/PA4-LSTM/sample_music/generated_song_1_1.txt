@@ -1,0 +1,20 @@
+<start>
+X:18
+T:Jigzoles die
+R:borngice
+I: baraile du Capourdarde Gallisc.Dancem"cst.f2
+Z:.Dhnting., 1
+Z:id:hn-balle Besoret or "Cbooly's #69
+Z:id:hn-jig-51
+M:6/8
+K:G
+AGE EEG^F | GEEF G2GA | GEDE GFGA | B>dBG DAGB | ABGE e^dFE | (DEDG EGED | BGBB ABGF | ~G3D EFGF | DGGF DGAF |GBvag (3agf | bgdf e3c |
+efgf ed^cA ||
+V:2
+(3Bcd e2ec | A6 (3cBc | B2G2 D2CE |
+FDdF dBAc | B2AG BAGB | ABAG E2(3D |
+KB,EB, Fdef | =edfa g2ec | B2GA B2GB |
+A3GAB | d2c2 A2cA | c2cA cBcA | BG)GABG A2GG | E2D2 DEFG ||
+(ABAG AGBA | G6ED ||
+|: DEFD GF)FG | EFGB ABBG | AGFA G2GE | B,DGB Agfe | de^cA ABGB | c2_A2AA | G2G2ED | EGEG GABA | GBdB GABG | AGDG d3 :|
+<end>

@@ -252,6 +252,8 @@ class MusicGenerator:
                 picked = torch.multinomial(prob, 1)
             elif method == "argmax":
                 _, picked = torch.max(output.view(-1), 0)
+            else:
+                raise Exception('Only support temp and argmax, got {}'.format(method))
 
             song += num2char[picked.item()]
 
