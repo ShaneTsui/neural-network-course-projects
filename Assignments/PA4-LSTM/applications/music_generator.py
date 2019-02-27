@@ -224,9 +224,9 @@ class MusicGenerator:
     def cont_train(self, model_path, model_name):
         pass
 
-    def generate(self, model_path=None, temperature=0.8, prime_str='<start>', max_len=1000, out_filename=None):
+    def generate(self, model_path=None, temperature=0.8, prime_str='<start>', max_len=1000, out_filename=None, method="temp"):
         if not model_path:
-            model = self.model
+            model = self.best_model
             computing_device = self.computing_device
         else:
             model, computing_device = self._load_model(model_path)
@@ -247,8 +247,11 @@ class MusicGenerator:
             inputs = torch.FloatTensor(inputs[np.newaxis, np.newaxis, :])
             output, hidden_generate = model(Variable(inputs.to(computing_device)), hidden_generate)
 
-            prob = F.softmax(output.view(-1) / temperature)
-            picked = torch.multinomial(prob, 1)
+            if method == "temp":
+                prob = F.softmax(output.view(-1) / temperature)
+                picked = torch.multinomial(prob, 1)
+            elif method == "argmax":
+                _, picked = torch.max(output.view(-1), 0)
 
             song += num2char[picked.item()]
 
