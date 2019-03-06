@@ -1,0 +1,13 @@
+<start>
+X:15
+T:Au Ho part
+C:Trid Bands Choled.
+Z:id:hn-hornpipe-60
+M:C|
+K:G
+(3EFD | EGEE D2D2 | G2Bd edcB | A2GF D2 (3GFG | A2BA AGFA | AGFE D2GE | EFED DEFE | F2D2 DFGA | d2dB A2 (3Bcd |
+e2e2 efga | gedB AdBA | G2GF G2 :|
+|: de | ~a3f g2ge | defg edcB | AGFG AFGF |1 EAGF G2AG :|2 dBGB A2Bc | ABAB AGEF | AGFE DEFG | EGBd cBAG | AGFE D2ED |
+E2E2 D2GF | EFGB AGE2 | (3Bcd ed edBd | edcB A2GA | G2GF G2 :|
+|: cBce defg | fedB G2GF | G2EF EGBd | e2ec efge | dedc BAGF ||
+<end>

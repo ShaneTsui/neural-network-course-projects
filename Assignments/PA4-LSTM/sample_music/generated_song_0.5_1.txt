@@ -1,0 +1,19 @@
+<start>
+X:25
+T:Bbanle de March?t
+T:Trade Frand
+R:hornpipe
+H:See also #64
+D:Nomby Syone
+Z:id:hn-hornpipe-22
+M:C|
+K:D
+AG FA ABcd|ecAF AGFA|d2 (3Bcd ecAB|AGFF DEFG|AGFA GAGA|
+GFGA BcdB|AGAB cAdB|cAAB cAGA|Bd~B3 dcAF|GBdB A2GA|
+G2BG AGFG|AGAc Bcde|fdfd efge|dcBA G2:|
+|:z2|(3Bcd BAGB ABcA|(3Bcd (3Bcd ecAB|c2ce fdAF|GABc dBGF|1 GAGB GBcd:|2 AGFE E2D2|
+|: (3efe de (3ffg | (3afa (3c'ba (3agf |
+(3fgf (3gfe dB|A2AF EFGA|
+BABG AFGA|B2G2 G2:|
+|:z2||
+<end>

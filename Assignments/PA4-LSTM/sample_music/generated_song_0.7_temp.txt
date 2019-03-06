@@ -1,0 +1,14 @@
+<start>
+X:20
+T:Carro de Connante
+T:Ligrock Rofnane
+R:march
+Z:id:hn-mazurka-13
+M:2/4
+L:1/8
+K:D
+FE FE|DD AF|GF/G/ ED|FA Bc|AB A>B|cA Bc|de/f/ ef|ed cB|A/B/A/B/ AG|FD FF|GE/F/ EF|GF/E/ DE|
+AB AB|ea ag|af ec|Bd ef|gf gf|ef e>d|BA DF|1 F3 A2:|
+|: df ed/e/|fd ed|BA GF|F>D D2:|
+|:g>f ed|dB AB|AG F>E|FD E2|GB/A/ GE|D2 D2:|
+<end>

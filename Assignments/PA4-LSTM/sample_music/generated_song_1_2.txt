@@ -1,0 +1,20 @@
+<start>
+X:60
+T:Carole Ruerian 
+T:Anesit Callsud
+R:barnele ce Malile
+H:Caratou Detan: Ceon C Mancestredid Iumo il Cankids" Ut "JennACo
+D:Math Derain: The Mowh
+R:hichela
+N:Parginaman miseip#202
+Z:id:hn-jig-176
+M:6/8
+K:D
+FFE DEFG|EDD2 EFG|~A3 DFE|DB,F EDD|DEA E3|CED E2f|gdc B2d|egf fgf|1 BGE G3:|2 AGE E2D||
+|:(3BcB AED^F|EFE G2e|dce dcB|AFc Aed|caa afg-|edB A2B|1 AFD A2D:|2 FED E2F||
+Hc2e e2d|cBA cAF|DEF EFA|d2c ABc|1 ddB Acd:|2 edB c2e|~a3 afd|fAF AFF|1 GAB cde||
+|:fed fed|efe dcB|ccA fa=|1 eec AGF|Gdd edc|BGB AFD|1 DDD D2e:|2 BFD D2e||
+|:~a3 agb|agf eaf:|
+|: =fef gab | age dce |1 afd d2B | 
+cAc A2c | BGG Bdg |1 fdc d3 :|2 dff B2B | c2F ~B3 :|
+<end>

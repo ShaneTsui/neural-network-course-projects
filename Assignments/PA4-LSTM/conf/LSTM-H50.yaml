@@ -1,0 +1,19 @@
+model_type: 'LSTM'
+
+train:
+ filename: './pa4Data/train.txt'
+ chunk_size: 100
+ hidden_size: 50
+ epochs: 100
+ learning_rate: 0.0005
+ plot_per_n: 100
+
+val:
+ filename: './pa4Data/val.txt'
+ chunk_size: 100
+ val_every_n: 1000
+ early_stop_n: 22
+
+test:
+ filename: './pa4Data/test.txt'
+ chunk_size: 100

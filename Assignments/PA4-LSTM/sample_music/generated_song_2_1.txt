@@ -1,0 +1,15 @@
+<start>
+X:55
+T:Bbij'rs La Wh?lg:i?
+R:Was-
+N:Porm?:
+C<?ditu
+:1809
+K:Bbmaj7
+|::G"A
+|:2 cdd_eef2|\
+begd)G7gcg|tF_EFAHxobe!czF|(FGF.^G2A9&LB4|]
+<ond>
+t>C9684 C2mbb"anbrec Qc8+N806/88.Mel
+d>BrF|d2>>c BB |]
+<end>

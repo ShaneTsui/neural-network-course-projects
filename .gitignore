@@ -11,6 +11,9 @@ Assignments/**/data/
 *.tar.gz
 **/datasets/
 
+# Results
+**/saved/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
